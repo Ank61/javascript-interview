@@ -10,7 +10,7 @@ services:
       POSTGRES_PASSWORD: root
       POSTGRES_DB: graph
     ports:
-      - "5431:5432"
+      - "5431:5432" # Host port 5431 mapped to container port 5432
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
@@ -24,7 +24,7 @@ services:
     restart: always
     environment:
       PORT: 4000
-      DATABASE_URL: postgres://postgres:root@postgres:5432/graph
+      DATABASE_URL: "postgresql://postgres:root@postgres:5432/graph" # Updated to use Docker network
     ports:
       - "4000:4000"
     depends_on:
