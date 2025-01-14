@@ -19,7 +19,7 @@ model Author {
 }
 
 model Book {
-  id            Int       @id @default(autoincrement())
+  id            Int      @id @default(autoincrement())
   title         String
   description   String
   authorId      Int
@@ -32,12 +32,12 @@ model Book {
 }
 
 model Review {
-  id        Int       @id @default(autoincrement())
-  bookId    Int
+  id           Int      @id @default(autoincrement())
+  bookId       Int
   reviewerName String
-  content   String
-  rating    Float
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  book      Book     @relation(fields: [bookId], references: [id])
+  content      String
+  rating       Float
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  book         Book     @relation(fields: [bookId], references: [id])
 }

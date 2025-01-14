@@ -10,7 +10,7 @@ services:
       POSTGRES_PASSWORD: root
       POSTGRES_DB: graph
     ports:
-      - "5431:5432" # Host port 5431 mapped to container port 5432
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
@@ -24,11 +24,13 @@ services:
     restart: always
     environment:
       PORT: 4000
-      DATABASE_URL: "postgresql://postgres:root@postgres:5432/graph" # Updated to use Docker network
+      DATABASE_URL: postgres://postgres:root@192.168.0.241:5432
     ports:
       - "4000:4000"
     depends_on:
       - postgres
+    command: >
+      sh -c "npx prisma db push && node index.js"
     networks:
       - app-network
 
