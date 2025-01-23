@@ -61,18 +61,18 @@
 //     return finalString;
 // };
 
-var isSubsequence = function (s, t) {
-  let pos = 0;
-  for (let i = 0; i < t.length; t++) {
-    console.log(s[pos], t[i]);
-    if (s[pos] == t[i]) {
-      pos++;
-    }
-  }
-  return pos === s.length ? true : false;
-};
+// var isSubsequence = function (s, t) {
+//   let pos = 0;
+//   for (let i = 0; i < t.length; t++) {
+//     console.log(s[pos], t[i]);
+//     if (s[pos] == t[i]) {
+//       pos++;
+//     }
+//   }
+//   return pos === s.length ? true : false;
+// };
 
-console.log(isSubsequence("abc", "ahbgdc"));
+// console.log(isSubsequence("abc", "ahbgdc"));
 
 //EXAMPLE : 
 // Example 1:
