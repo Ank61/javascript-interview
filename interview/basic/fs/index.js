@@ -24,43 +24,43 @@
 // });
 
 // API WITH EXPRESS
-const express = require('express');
-const multer = require('multer');
-const path = require('path');
+// const express = require('express');
+// const multer = require('multer');
+// const path = require('path');
 
-const app = express();
-const PORT = 3000;
+// const app = express();
+// const PORT = 3000;
 
-// Configure multer storage
-const storage = multer.diskStorage({
-    destination: './uploads/',
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname));
-    }
-});
-const upload = multer({ storage });
-// File upload endpoint
-app.post('/upload', upload.single('file'), (req, res) => {
-    try {
-        if (!req.file) {
-            return res.status(400).json({ error: 'No file uploaded' });
-        }
-        res.json({
-            message: 'File uploaded successfully',
-            file: {
-                name: req.file.filename,
-                size: req.file.size,
-                mimetype: req.file.mimetype
-            }
-        });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
+// // Configure multer storage
+// const storage = multer.diskStorage({
+//     destination: './uploads/',
+//     filename: (req, file, cb) => {
+//         cb(null, Date.now() + path.extname(file.originalname));
+//     }
+// });
+// const upload = multer({ storage });
+// // File upload endpoint
+// app.post('/upload', upload.single('file'), (req, res) => {
+//     try {
+//         if (!req.file) {
+//             return res.status(400).json({ error: 'No file uploaded' });
+//         }
+//         res.json({
+//             message: 'File uploaded successfully',
+//             file: {
+//                 name: req.file.filename,
+//                 size: req.file.size,
+//                 mimetype: req.file.mimetype
+//             }
+//         });
+//     } catch (error) {
+//         res.status(500).json({ error: error.message });
+//     }
+// });
 
-// Test endpoint
-app.get('/test', (req, res) => {
-    res.json({ message: 'API is working' });
-});
+// // Test endpoint
+// app.get('/test', (req, res) => {
+//     res.json({ message: 'API is working' });
+// });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
