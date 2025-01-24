@@ -43,6 +43,8 @@
 // word2:    p   q
 // merged: a p b q c   d
 
+//-------------------------------------------------------------------------------------------
+
 // var mergeAlternately = function(word1, word2) {
 //     let finalString = "";
 //     let minLength = Math.min(word1.length, word2.length);
@@ -61,18 +63,20 @@
 //     return finalString;
 // };
 
-var isSubsequence = function (s, t) {
-  let pos = 0;
-  for (let i = 0; i < t.length; t++) {
-    console.log(s[pos], t[i]);
-    if (s[pos] == t[i]) {
-      pos++;
-    }
-  }
-  return pos === s.length ? true : false;
-};
+//-------------------------------------------------------------------------------------------
 
-console.log(isSubsequence("abc", "ahbgdc"));
+// var isSubsequence = function (s, t) {
+//   let pos = 0;
+//   for (let i = 0; i < t.length; t++) {
+//     console.log(s[pos], t[i]);
+//     if (s[pos] == t[i]) {
+//       pos++;
+//     }
+//   }
+//   return pos === s.length ? true : false;
+// };
+
+// console.log(isSubsequence("abc", "ahbgdc"));
 
 //EXAMPLE : 
 // Example 1:
@@ -111,3 +115,87 @@ console.log(isSubsequence("abc", "ahbgdc"));
 
 // const reverse = reverseWords("the sky is blue");
 // console.log(reverse);
+
+//-------------------------------------------------------------------------------------------
+// var compress = function(chars) {
+//   let writeIndex = 0; // Position to write the compressed characters
+//   let readIndex = 0;  // Position to read the original characters
+
+//   while (readIndex < chars.length) {
+//     let char = chars[readIndex];
+//     let count = 0;
+
+//     // Count the number of occurrences of the current character
+//     while (readIndex < chars.length && chars[readIndex] === char) {
+//       readIndex++;
+//       count++;
+//     }
+
+//     // Write the character
+//     chars[writeIndex] = char;
+//     writeIndex++;
+
+//     // Write the count if more than 1
+//     if (count > 1) {
+//       let countStr = count.toString();
+//       for (let c of countStr) {
+//         chars[writeIndex] = c;
+//         writeIndex++;
+//       }
+//     }
+//   }
+
+//   // Resize the array to the new length
+//   chars.length = writeIndex;
+
+//   return writeIndex; // Return the length of the compressed array
+// };
+
+// const reverse = compress(["a", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b"]);
+// console.log(reverse);
+
+
+//-------------------------------------------------------------------------------------------
+// Example 1:
+
+// Input: str1 = "ABCABC", str2 = "ABC"
+// Output: "ABC"
+
+var gcdOfStrings = function (str1, str2) {
+  let smallStr = str1.length > str2.length ? str2 : str1;
+  let largeStr = str1.length > str2.length ? str1 : str2;
+  let largestDiv = "";
+  let i = 0;
+  let j = 0;
+  while (j < smallStr.length) {
+    while (i < largeStr.length) {
+      if (str1[i] === str2[j]) {
+        largestDiv = largestDiv + str2[j]
+        i++;
+        j++;
+      }
+      else {
+        i++
+      }
+    }
+    j++;
+  }
+  return largestDiv;
+};
+
+// var gcdOfStrings = function (str1, str2) {
+//   if (str1 + str2 !== str2 + str1) {
+//     return ""
+//   }
+
+//   let minLen = Math.min(str1.length, str2.length);
+//   for (let i = minLen; i > 0; i--) {
+//     if ((str1.length % i === 0) && (str2.length % i === 0)) {
+//       return str1.substring(0, i);
+//     }
+//   }
+// };
+
+// // Example usage
+// const result = gcdOfStrings("ABABAB", "ABAB");
+// console.log(result); // Output: "AB"
