@@ -12,7 +12,7 @@ function isPrime(num) {
     return true;
 }
 
-function generatePrimes(start, end) {
+exports.generatePrimes = (start, end) => {
     const primes = [];
     for (let i = start; i <= end; i++) {
         if (isPrime(i)) {
@@ -20,6 +20,16 @@ function generatePrimes(start, end) {
         }
     }
     return primes;
-}
 
-module.exports = { generatePrimes };
+}
+// function generatePrimes(start, end) {
+//     const primes = [];
+//     for (let i = start; i <= end; i++) {
+//         if (isPrime(i)) {
+//             primes.push(i);
+//         }
+//     }
+//     return primes;
+// }
+
+// module.exports = { generatePrimes };

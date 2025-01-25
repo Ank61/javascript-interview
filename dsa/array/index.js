@@ -25,7 +25,9 @@
 //   }
 //   return flowers <= 0;
 // };
+
 //-------------------------------------------------------------------------------------------
+
 // Input: candies = [2,3,5,1,3], extraCandies = 3
 // Output: [true,true,true,false,true] 
 // Explanation: If you give all extraCandies to:
@@ -77,7 +79,9 @@
 // };
 // const reverse = moveZeroes([0,1,0,3,12]);
 // console.log(reverse)
+
 //-------------------------------------------------------------------------------------------
+
 // Example 1:
 // Input: nums = [1,2,3,4]
 // Output: [24,12,8,6]
@@ -85,27 +89,27 @@
 // Input: nums = [-1,1,0,-3,3]
 // Output: [0,0,9,0,0]
 
-var productExceptSelf = function (nums) {
-  let n = nums.length;
-  let result = new Array(n).fill(1);
-  console.log(result)
-  let leftProduct = 1;
+// var productExceptSelf = function (nums) {
+//   let n = nums.length;
+//   let result = new Array(n).fill(1);
+//   console.log(result)
+//   let leftProduct = 1;
 
-  // First pass: calculate left products and store in result
-  for (let i = 0; i < n; i++) {
-    result[i] = leftProduct;
-    leftProduct *= nums[i];
-  }
-  console.log("Left", result)
-  let rightProduct = 1;
-  // Second pass: calculate right products and multiply with result
-  for (let i = n - 1; i >= 0; i--) {
-    result[i] *= rightProduct;
-    rightProduct *= nums[i];
-  }
-  console.log("Right", result)
-  return result;
-};
+//   // First pass: calculate left products and store in result
+//   for (let i = 0; i < n; i++) {
+//     result[i] = leftProduct;
+//     leftProduct *= nums[i];
+//   }
+//   console.log("Left", result)
+//   let rightProduct = 1;
+//   // Second pass: calculate right products and multiply with result
+//   for (let i = n - 1; i >= 0; i--) {
+//     result[i] *= rightProduct;
+//     rightProduct *= nums[i];
+//   }
+//   console.log("Right", result)
+//   return result;
+// };
 
-console.log(productExceptSelf([1, 2, 3, 4])); // Output: [24,12,8,6]
-console.log(productExceptSelf([-1, 1, 0, -3, 3])); // Output: [0,0,9,0,0]
+// console.log(productExceptSelf([1, 2, 3, 4])); // Output: [24,12,8,6]
+// console.log(productExceptSelf([-1, 1, 0, -3, 3])); // Output: [0,0,9,0,0]
