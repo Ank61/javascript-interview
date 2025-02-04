@@ -1,3 +1,8 @@
+process.on('message', (result)=>{
+console.log("child generating result " , result)
+process.send("Done from child")
+})
+
 /////////////////// /////////   CHILD PROCESSES  /////////////////////////////
 //// Spawn Method in child process
 
@@ -16,16 +21,16 @@
 
 
   // exec method in the child processes
-const {exec} = require("child_process");
-exec("copy server.js dummy.js", (err, stdout , stderr)=>{
-  if(err){
-    console.log("Error has occured" , err);
-  }
-  if(stderr){
-    console.log("Error has occured in the stream", stderr)
-  }
-  console.log("Respnse " , stdout);
-});
+// const {exec} = require("child_process");
+// exec("copy server.js dummy.js", (err, stdout , stderr)=>{
+//   if(err){
+//     console.log("Error has occured" , err);
+//   }
+//   if(stderr){
+//     console.log("Error has occured in the stream", stderr)
+//   }
+//   console.log("Respnse " , stdout);
+// });
 
 
 // Diference between spawn and exec methods
