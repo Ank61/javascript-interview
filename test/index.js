@@ -1,41 +1,54 @@
-// *
-//   **
-//    ***
-//     ****
-//      *****
-//     ****
-//    ***
-//   **
-//  *
+function diamond(num) {
+  // First Half (Upper part)
+  for (let i = 0; i < num; i++) {
+    let output = "";
 
-function arrowPatter(num) {
-  //Spaces
-  for (let i = 1; i < num; i++) {
-    let string = "";
-    //for Spaces
-    for (let j = 1; j <= i; j++) {
-      string = string + " ";
+    // Leading spaces
+    for (let j = num - i; j > 0; j--) {
+      output += " ";
     }
-    //for Stars
-    for (let k = 1; k <= i; k++) {
-      string = string + "*";
+
+    // First star
+    output += "*";
+
+    // Middle spaces
+    for (let k = 1; k < 2 * i; k++) {
+      output += " ";
     }
-    console.log(string);
+
+    // Second star (only if not first row)
+    if (i != 0) {
+      output += "*";
+    }
+
+    console.log(output);
   }
 
-  //For below
-  for (let i = num; i > 1; i--) {
-    let string = "";
-    //for Spaces
-    for (let j = i; j >= 1; j--) {
-      string = string + " ";
+  // Second Half (Lower part)
+  for (let i = 1; i < num; i++) {
+    let output = "";
+
+    // Leading spaces
+    for (let j = 0; j <= i; j++) {
+      output += " ";
     }
-    //for Stars
-    for (let k = i; k >= 1; k--) {
-      string = string + "*";
+
+    // First star
+    output += "*";
+
+    // Middle spaces
+    for (let j = 2 * (num - i) - 3; j > 0; j--) {
+      output += " ";
     }
-    console.log(string);
+
+    // Second star (only if not last row)
+    if (i != num - 1) {
+      output += "*";
+    }
+
+    console.log(output);
   }
 }
 
-arrowPatter(5);
+// Test with num = 7
+diamond(7);

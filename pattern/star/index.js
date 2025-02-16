@@ -74,34 +74,58 @@
 // pattern(5);
 
 
-function arrowPatter(num) {
-    //Spaces
-    for (let i = 1; i < num; i++) {
-      let string = "";
-      //for Spaces
-      for (let j = 1; j <= i; j++) {
-        string = string + " ";
-      }
-      //for Stars
-      for (let k = 1; k <= i; k++) {
-        string = string + "*";
-      }
-      console.log(string);
-    }
+// function arrowPatter(num) {
+//     //Spaces
+//     for (let i = 1; i < num; i++) {
+//       let string = "";
+//       //for Spaces
+//       for (let j = 1; j <= i; j++) {
+//         string = string + " ";
+//       }
+//       //for Stars
+//       for (let k = 1; k <= i; k++) {
+//         string = string + "*";
+//       }
+//       console.log(string);
+//     }
   
-    //For below
-    for (let i = num; i > 1; i--) {
-      let string = "";
-      //for Spaces
-      for (let j = i; j >= 1; j--) {
-        string = string + " ";
-      }
-      //for Stars
-      for (let k = i; k >= 1; k--) {
-        string = string + "*";
-      }
-      console.log(string);
-    }
-  }
+//     //For below
+//     for (let i = num; i > 1; i--) {
+//       let string = "";
+//       //for Spaces
+//       for (let j = i; j >= 1; j--) {
+//         string = string + " ";
+//       }
+//       //for Stars
+//       for (let k = i; k >= 1; k--) {
+//         string = string + "*";
+//       }
+//       console.log(string);
+//     }
+//   }
   
-  arrowPatter(5);
+//   arrowPatter(5);
+
+
+//   function stringPattern(str) {
+//     const reverStr = str.split('').reverse().join(''); 
+//   console.log(str);
+//   for(let i=0 ; i<str.length; i++){
+//     let output ="";
+//     //first Leters
+//         output = output + str[i]
+//     //Space
+//     for(let k=0 ; k<str.length-2; k++){
+//         output = output + ' ';
+//     }
+//     //Last letters
+//         output = output + reverStr[i];
+
+//     console.log(output);
+
+//   }
+//   console.log(reverStr);
+
+// }
+
+// stringPattern("ankithello");
