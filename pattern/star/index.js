@@ -1,3 +1,15 @@
+// - Understand the Pattern Structure
+// Observe the number of rows (N) and columns in the pattern.
+// Identify how values change in each row and column.
+// Recognize symmetry, repetition, or numerical relationships.
+
+// - Break It into Rows and Columns
+// Most pattern problems follow nested loops:
+// Outer loop → Controls rows (for i in range(N))
+// Inner loop → Controls columns (for j in range(N))
+// Print each row inside the outer loop.
+
+
 //-----------------------------------------------------------
 // *
 // **
@@ -60,3 +72,36 @@
 //   }
 // }
 // pattern(5);
+
+
+function arrowPatter(num) {
+    //Spaces
+    for (let i = 1; i < num; i++) {
+      let string = "";
+      //for Spaces
+      for (let j = 1; j <= i; j++) {
+        string = string + " ";
+      }
+      //for Stars
+      for (let k = 1; k <= i; k++) {
+        string = string + "*";
+      }
+      console.log(string);
+    }
+  
+    //For below
+    for (let i = num; i > 1; i--) {
+      let string = "";
+      //for Spaces
+      for (let j = i; j >= 1; j--) {
+        string = string + " ";
+      }
+      //for Stars
+      for (let k = i; k >= 1; k--) {
+        string = string + "*";
+      }
+      console.log(string);
+    }
+  }
+  
+  arrowPatter(5);
