@@ -45,23 +45,23 @@
 
 //-------------------------------------------------------------------------------------------
 
-// var mergeAlternately = function(word1, word2) {
-//     let finalString = "";
-//     let minLength = Math.min(word1.length, word2.length);
+var mergeAlternately = function (word1, word2) {
+  let finalString = "";
+  let minLength = Math.min(word1.length, word2.length);
 
-//     for (let i = 0; i < minLength; i++) {
-//         finalString += word1[i] + word2[i];
-//     }
+  for (let i = 0; i < minLength; i++) {
+    finalString += word1[i] + word2[i];
+  }
 
-//     if (word1.length > minLength) {
-//         finalString += word1.slice(minLength);
-//     }
-//     if (word2.length > minLength) {
-//         finalString += word2.slice(minLength);
-//     }
+  if (word1.length > minLength) {
+    finalString += word1.slice(minLength);
+  }
+  if (word2.length > minLength) {
+    finalString += word2.slice(minLength);
+  }
 
-//     return finalString;
-// };
+  return finalString;
+};
 
 //-------------------------------------------------------------------------------------------
 
@@ -161,27 +161,27 @@
 // Input: str1 = "ABCABC", str2 = "ABC"
 // Output: "ABC"
 
-var gcdOfStrings = function (str1, str2) {
-  let smallStr = str1.length > str2.length ? str2 : str1;
-  let largeStr = str1.length > str2.length ? str1 : str2;
-  let largestDiv = "";
-  let i = 0;
-  let j = 0;
-  while (j < smallStr.length) {
-    while (i < largeStr.length) {
-      if (str1[i] === str2[j]) {
-        largestDiv = largestDiv + str2[j]
-        i++;
-        j++;
-      }
-      else {
-        i++
-      }
-    }
-    j++;
-  }
-  return largestDiv;
-};
+// var gcdOfStrings = function (str1, str2) {
+//   let smallStr = str1.length > str2.length ? str2 : str1;
+//   let largeStr = str1.length > str2.length ? str1 : str2;
+//   let largestDiv = "";
+//   let i = 0;
+//   let j = 0;
+//   while (j < smallStr.length) {
+//     while (i < largeStr.length) {
+//       if (str1[i] === str2[j]) {
+//         largestDiv = largestDiv + str2[j]
+//         i++;
+//         j++;
+//       }
+//       else {
+//         i++
+//       }
+//     }
+//     j++;
+//   }
+//   return largestDiv;
+// };
 
 // var gcdOfStrings = function (str1, str2) {
 //   if (str1 + str2 !== str2 + str1) {
@@ -199,3 +199,27 @@ var gcdOfStrings = function (str1, str2) {
 // // Example usage
 // const result = gcdOfStrings("ABABAB", "ABAB");
 // console.log(result); // Output: "AB"
+
+
+function firstLetter(str) {
+  let firstLetter = false;
+  let output = "";
+  for (let i = 0; i < str.length; i++) {
+    if (firstLetter || i == 0) {
+      console.log(str[i])
+      output = output + str[i].toUpperCase();
+      firstLetter = false;
+    }
+    else if (str[i] === " ") {
+      firstLetter = true;
+      output = output + str[i];
+    }
+    else {
+      firstLetter = false;
+      output = output + str[i].toLowerCase()
+    }
+  }
+  return output;
+}
+
+console.log(firstLetter("my name hello ankit"))
