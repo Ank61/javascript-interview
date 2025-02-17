@@ -54,3 +54,7 @@ for (let fruit of fruits) {
   const uniqueNumbers = [...new Set(numbers)];
   console.log(uniqueNumbers); // [1, 2, 3, 4, 5, 6]
   
+
+  //--------------------------------------------------------------------------------------
+  // A WeakSet is similar to a Set, but it only holds weak references to its values, which must be objects.
+  // If there are no other references to an object stored in a WeakSet, the object can be garbage collected, helping manage memory.

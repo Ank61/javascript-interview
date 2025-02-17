@@ -2,18 +2,18 @@
 // 1. get, set and delete are more faster than regular objects
 // 2. Not only string or symbols but also object, integer or any primitive types 
 
-// const map = new Map([
-//     [2, "check"],
-//     ["test", 34455],
-// ]);
+const map = new Map([
+    [2, "check"],
+    ["test", 34455],
+]);
 
-// console.log(map)
-// console.log(map.get("test"))
-// console.log(map.set("test" , "text"))
-// console.log(map.has("test"))
-// console.log(map.delete("test"))
-// console.log(map.get("test"))
-// console.log(map1.size);
+console.log(map)
+console.log(map.get("test"))
+console.log(map.set("test" , "text"))
+console.log(map.has("test"))
+console.log(map.delete("test"))
+console.log(map.get("test"))
+console.log(map.size);
 
 // set(key, value): Adds or updates an element in the Map.
 // get(key): Retrieves the value associated with the specified key.
