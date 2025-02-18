@@ -45,23 +45,23 @@
 
 //-------------------------------------------------------------------------------------------
 
-var mergeAlternately = function (word1, word2) {
-  let finalString = "";
-  let minLength = Math.min(word1.length, word2.length);
+// var mergeAlternately = function (word1, word2) {
+//   let finalString = "";
+//   let minLength = Math.min(word1.length, word2.length);
 
-  for (let i = 0; i < minLength; i++) {
-    finalString += word1[i] + word2[i];
-  }
+//   for (let i = 0; i < minLength; i++) {
+//     finalString += word1[i] + word2[i];
+//   }
 
-  if (word1.length > minLength) {
-    finalString += word1.slice(minLength);
-  }
-  if (word2.length > minLength) {
-    finalString += word2.slice(minLength);
-  }
+//   if (word1.length > minLength) {
+//     finalString += word1.slice(minLength);
+//   }
+//   if (word2.length > minLength) {
+//     finalString += word2.slice(minLength);
+//   }
 
-  return finalString;
-};
+//   return finalString;
+// };
 
 //-------------------------------------------------------------------------------------------
 
@@ -201,25 +201,53 @@ var mergeAlternately = function (word1, word2) {
 // console.log(result); // Output: "AB"
 
 
-function firstLetter(str) {
-  let firstLetter = false;
+// function firstLetter(str) {
+//   let firstLetter = false;
+//   let output = "";
+//   for (let i = 0; i < str.length; i++) {
+//     if (firstLetter || i == 0) {
+//       console.log(str[i])
+//       output = output + str[i].toUpperCase();
+//       firstLetter = false;
+//     }
+//     else if (str[i] === " ") {
+//       firstLetter = true;
+//       output = output + str[i];
+//     }
+//     else {
+//       firstLetter = false;
+//       output = output + str[i].toLowerCase()
+//     }
+//   }
+//   return output;
+// }
+
+// console.log(firstLetter("my name hello ankit"))
+
+//-------------------------------------------------------------------------------------------
+
+function reverseString(str) {
+  const originalStr = str + " ";
+  const arr = [];
+  let dummy = "";
   let output = "";
-  for (let i = 0; i < str.length; i++) {
-    if (firstLetter || i == 0) {
-      console.log(str[i])
-      output = output + str[i].toUpperCase();
-      firstLetter = false;
+  let i = 0;
+  while (i <= str.length) {
+    if (originalStr[i] !== " ") {
+      dummy = dummy + originalStr[i];
+    } else {
+      arr.push(dummy);
+      dummy = "";
     }
-    else if (str[i] === " ") {
-      firstLetter = true;
-      output = output + str[i];
-    }
-    else {
-      firstLetter = false;
-      output = output + str[i].toLowerCase()
+    i++;
+  }
+  while (arr.length > 0) {
+    output += arr.pop();
+    if (arr.length > 0) {
+      output += " ";
     }
   }
+
   return output;
 }
-
-console.log(firstLetter("my name hello ankit"))
+console.log(reverseString("Hello Ankit is my name"));

@@ -17,26 +17,26 @@
 // console.log(binarySearch(arr, 10)); // Output: -1
 
 
-// function binarySearch(num, target) {
-//     let low = 0;
-//     let high = num.length;
+function binarySearch(num, target) {
+    let low = 0;
+    let high = num.length;
 
-//     while (low <= high) {
-//         let middle = Math.floor((high - low)/2);
+    while (low <= high) {
+        let middle = Math.floor((high - low)/2);
 
-//         if(num[middle] ===target){
-//             return middle;
-//         }
-//         else if(num[middle]<=target){
-//             //target bigger ==> find middle in right
-//             low = middle+1;
-//         }
-//         else{
-//             high = middle-1
-//         }
-//     }
-//     return -1;
+        if(num[middle] ===target){
+            return middle;
+        }
+        else if(num[middle]<=target){
+            //target bigger ==> find middle in right
+            low = middle+1;
+        }
+        else{
+            high = middle-1
+        }
+    }
+    return -1;
 
-// }
+}
 
-// console.log(binarySearch([2, 4, 5, 6, 7, 98], 6))
+console.log(binarySearch([2, 4, 5, 6, 7, 98], 6))
