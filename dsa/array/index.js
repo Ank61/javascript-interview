@@ -131,3 +131,20 @@
     
 //     return [];
 // };
+
+function average(arr, target) {
+    let i = 0;
+    let j = arr.length - 1;
+    while (i < j) {
+      const averagesum = Math.floor((arr[i] + arr[j]) / 2);
+      if (averagesum === target) {
+        return true;
+      } else if (averagesum < target) {
+        i++;
+      } else {
+        j--;
+      }
+    }
+    return false;
+  }
+  console.log(average([1, 4, 7, 11, 18, 21, 33, 47, 51], 22));
