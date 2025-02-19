@@ -1,3 +1,47 @@
+// Example 1:
+
+// Input: nums = [1,0,-1,0,-2,2], target = 0
+// Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
+// Example 2:
+
+// Input: nums = [2,2,2,2,2], target = 8
+// Output: [[2,2,2,2]]
+
+var fourSum = function(nums, target) {
+  nums.sort((a, b) => a - b); // Sorting the array for two-pointer approach
+  const result = [];
+  const n = nums.length;
+
+  for (let i = 0; i < n - 3; i++) {
+      if (i > 0 && nums[i] === nums[i - 1]) continue; // Skip duplicate values
+
+      for (let j = i + 1; j < n - 2; j++) {
+          if (j > i + 1 && nums[j] === nums[j - 1]) continue; // Skip duplicates
+
+          let left = j + 1, right = n - 1;
+
+          while (left < right) {
+              const sum = nums[i] + nums[j] + nums[left] + nums[right];
+
+              if (sum === target) {
+                  result.push([nums[i], nums[j], nums[left], nums[right]]);
+                  while (left < right && nums[left] === nums[left + 1]) left++; // Skip duplicates
+                  while (left < right && nums[right] === nums[right - 1]) right--; // Skip duplicates
+                  left++;
+                  right--;
+              } else if (sum < target) {
+                  left++;
+              } else {
+                  right--;
+              }
+          }
+      }
+  }
+  return result;
+};
+
+console.log(fourSum([1,0,-1,0,-2,2],0 ))
+
 //Problem :
 // Input: flowerbed = [1,0,0,0,1], n = 1
 // Output: true
@@ -132,19 +176,19 @@
 //     return [];
 // };
 
-function average(arr, target) {
-    let i = 0;
-    let j = arr.length - 1;
-    while (i < j) {
-      const averagesum = Math.floor((arr[i] + arr[j]) / 2);
-      if (averagesum === target) {
-        return true;
-      } else if (averagesum < target) {
-        i++;
-      } else {
-        j--;
-      }
-    }
-    return false;
-  }
-  console.log(average([1, 4, 7, 11, 18, 21, 33, 47, 51], 22));
+// function average(arr, target) {
+//     let i = 0;
+//     let j = arr.length - 1;
+//     while (i < j) {
+//       const averagesum = Math.floor((arr[i] + arr[j]) / 2);
+//       if (averagesum === target) {
+//         return true;
+//       } else if (averagesum < target) {
+//         i++;
+//       } else {
+//         j--;
+//       }
+//     }
+//     return false;
+//   }
+//   console.log(average([1, 4, 7, 11, 18, 21, 33, 47, 51], 22));
