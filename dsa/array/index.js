@@ -1,3 +1,47 @@
+// Example 1:
+
+// Input: nums = [1,0,-1,0,-2,2], target = 0
+// Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
+// Example 2:
+
+// Input: nums = [2,2,2,2,2], target = 8
+// Output: [[2,2,2,2]]
+
+// var fourSum = function(nums, target) {
+//   nums.sort((a, b) => a - b); // Sorting the array for two-pointer approach
+//   const result = [];
+//   const n = nums.length;
+
+//   for (let i = 0; i < n - 3; i++) {
+//       if (i > 0 && nums[i] === nums[i - 1]) continue; // Skip duplicate values
+
+//       for (let j = i + 1; j < n - 2; j++) {
+//           if (j > i + 1 && nums[j] === nums[j - 1]) continue; // Skip duplicates
+
+//           let left = j + 1, right = n - 1;
+
+//           while (left < right) {
+//               const sum = nums[i] + nums[j] + nums[left] + nums[right];
+
+//               if (sum === target) {
+//                   result.push([nums[i], nums[j], nums[left], nums[right]]);
+//                   while (left < right && nums[left] === nums[left + 1]) left++; // Skip duplicates
+//                   while (left < right && nums[right] === nums[right - 1]) right--; // Skip duplicates
+//                   left++;
+//                   right--;
+//               } else if (sum < target) {
+//                   left++;
+//               } else {
+//                   right--;
+//               }
+//           }
+//       }
+//   }
+//   return result;
+// };
+
+// console.log(fourSum([1,0,-1,0,-2,2],0 ))
+
 //Problem :
 // Input: flowerbed = [1,0,0,0,1], n = 1
 // Output: true
@@ -118,7 +162,7 @@
 
 // var twoSum = function(nums, target) {
 //     const map = new Map();
-    
+
 //     for (let i = 0; i < nums.length; i++) {
 //         let complement = target - nums[i];
 
@@ -128,23 +172,75 @@
 
 //         map.set(nums[i], i);
 //     }
-    
+
 //     return [];
 // };
 
-function average(arr, target) {
-    let i = 0;
-    let j = arr.length - 1;
-    while (i < j) {
-      const averagesum = Math.floor((arr[i] + arr[j]) / 2);
-      if (averagesum === target) {
-        return true;
-      } else if (averagesum < target) {
-        i++;
-      } else {
-        j--;
-      }
+// function average(arr, target) {
+//     let i = 0;
+//     let j = arr.length - 1;
+//     while (i < j) {
+//       const averagesum = Math.floor((arr[i] + arr[j]) / 2);
+//       if (averagesum === target) {
+//         return true;
+//       } else if (averagesum < target) {
+//         i++;
+//       } else {
+//         j--;
+//       }
+//     }
+//     return false;
+//   }
+//   console.log(average([1, 4, 7, 11, 18, 21, 33, 47, 51], 22));
+
+
+//-------------------------------------------------------------------------------------------------------
+
+
+// Example 1:
+
+// Input: strs = ["flower","flow","flight"]
+// Output: "fl"
+// Example 2:
+
+// Input: strs = ["dog","racecar","car"]
+// Output: ""
+// Explanation: There is no common prefix among the input strings.
+
+// var longestCommonPrefix = function (strs) {
+//     const map = new Map();
+//     let letters = 0;
+//     let common = "";
+//     for (let i = 0; i < strs.length; i++) {
+//         const letterCheck = strs[1][letters];
+//         for (let j = i + 1; j < strs.length; j++) {
+//             if (strs[j][letters] === letterCheck) {
+//                 if(j===strs.length-1){
+//                    common = common + letterCheck;
+//                    letters++;
+//                 }
+//             }
+//             else {
+//                 break;
+//             }
+//         }
+//     }
+//     return common
+// };
+
+
+var longestCommonPrefix = function (strs) {
+    if (!strs || strs.length === 0) return "";
+    if (strs.length === 1) return strs[0];
+    let prefix = strs[0];
+    for (let i = 1; i < strs.length; i++) {
+        console.log("strs[i].indexOf(prefix)", strs[i].indexOf(prefix), strs[i], prefix)
+        while (strs[i].indexOf(prefix) !== 0) {
+            prefix = prefix.substring(0, prefix.length - 1);
+            if (prefix === "") return "";
+        }
     }
-    return false;
-  }
-  console.log(average([1, 4, 7, 11, 18, 21, 33, 47, 51], 22));
+    return prefix;
+};
+console.log(longestCommonPrefix(["dog", "don"]))
+//-------------------------------------------------------------------------------------------------------

@@ -195,7 +195,7 @@
 //   }
 // };
 
-// // Example usage
+// Example usage
 // const result = gcdOfStrings("ABABAB", "ABAB");
 // console.log(result); // Output: "AB"
 
@@ -222,58 +222,170 @@
 
 // console.log(firstLetter("my name hello ankit"))
 
-//-------------------------------------------------------------------------------------------
 
-// function reverseString(str) {
-//   const originalStr = str + " ";
-//   const arr = [];
-//   let dummy = "";
-//   let output = "";
-//   let i = 0;
-//   while (i <= str.length) {
-//     if (originalStr[i] !== " ") {
-//       dummy = dummy + originalStr[i];
+//------------------------------------------------------------------------------------------------------------
+
+// Example 1:
+
+// Input: haystack = "sadbutsad", needle = "sad"
+// Output: 0
+// Explanation: "sad" occurs at index 0 and 6.
+// The first occurrence is at index 0, so we return 0.
+// Example 2:
+
+// Input: haystack = "leetcode", needle = "leeto"
+// Output: -1
+// Explanation: "leeto" did not occur in "leetcode", so we return -1.
+
+
+// var strStr = function (haystack, needle) {
+//   let hayIndex = 0;
+//   let needleIndex = 0;
+
+//   while ((hayIndex < haystack.length) && (needleIndex < needle.length)) {
+//     if (needle[needleIndex] === haystack[hayIndex]) {
+//       hayIndex++;
+//       needleIndex++;
+//     }
+//     else {
+//       needleIndex = 0;
+//       hayIndex++;
+//     }
+//   }
+//   if (hayIndex === haystack.length) {
+//     return -1;
+//   }
+//   else {
+//     const max = Math.max(needle.length, hayIndex);
+//     const min = Math.min(needle.length, hayIndex);
+//     return max - min
+//   }
+// };
+
+
+// var strStr = function (haystack, needle) {
+//   if (needle === "") return 0; // Edge case: Empty needle
+//   if (needle.length > haystack.length) return -1; // Edge case: Needle is longer than haystack
+
+//   let hayIndex = 0;
+//   let needleIndex = 0;
+//   let startIndex = -1; // Track where the match starts
+
+//   while (hayIndex < haystack.length) {
+//     if (haystack[hayIndex] === needle[needleIndex]) {
+//       if (startIndex === -1) startIndex = hayIndex; // Mark the start of the match
+//       needleIndex++;
+//       if (needleIndex === needle.length) return startIndex; // Full match found
 //     } else {
-//       arr.push(dummy);
-//       dummy = "";
+//       if (startIndex !== -1) {
+//         hayIndex = startIndex; // Reset hayIndex to restart match
+//       }
+//       needleIndex = 0;
+//       startIndex = -1;
 //     }
-//     i++;
-//   }
-//   while (arr.length > 0) {
-//     output += arr.pop();
-//     if (arr.length > 0) {
-//       output += " ";
-//     }
+//     hayIndex++;
 //   }
 
-//   return output;
-// }
-// console.log(reverseString("Hello Ankit is my name"));
+//   return -1; // No match found
+// };
+// console.log(strStr("hello", "ll"))
 
-//-------------------------------------------------------------------------------------------
-// Input: s = "abcabcbb"
-// Output: 3
-// Explanation: The answer is "abc", with the length of 3.
 
-function longestSubs(str) {
-  const map = new Map();
-  let count = 0;
-  let maxCount = 0;
-  let i = 0;
-  while (i < str.length) {
-    if(!map.has(str[i])){
-      map.set(str[i]);
-      count++;
-    }else{
-      if(count > maxCount){
-        maxCount = count;
-      }
-      map.delete(str[i]);
-      count = 0;
-    }
-    i++
-  }
-  return maxCount
-}
+//---------------------------------------------------------------------------------------------
 
-console.log(longestSubs("abcdabchu"));
+// Input: s = "(()())(())"
+// Output: "()()()"
+//Count the primitive '(' and push until there is 0
+// var removeOuterParentheses = function(s) {
+//     let result = "";
+//     let openCount = 0;
+
+//     for (let i = 0; i < s.length; i++) {
+//         if (s[i] === '(') {
+//             if (openCount > 0) result += '(';
+//             openCount++;
+//         } else {
+//             openCount--;
+//             if (openCount > 0) result += ')';
+//         }
+//     }
+
+//     return result;
+// };
+
+// console.log(removeOuterParentheses("(())"))
+
+//---------------------------------------------------------------------------------------------
+
+// Input: s = "the sky is blue"
+// Output: "blue is sky the"
+
+// var reverseWords = function (s) {
+//     let str = "";
+//     let firstLetterHit = false;
+//     for (let j = 0; j < s.length; j++) {
+//         if (firstLetterHit) {
+//             str = str + s[j];
+//         }
+//         else {
+//             if (!firstLetterHit && str.length == 0) {
+//                 if (s[j] !== " ") {
+//                     firstLetterHit = true;
+//                     str = str + s[j];
+//                 }
+//             }
+//         }
+//     }
+
+//     console.log("....", str)
+//     const arr = [];
+//     let finalOut = "";
+//     let output = "";
+//     for (let i = 0; i < s.length; i++) {
+//         if (s[i] !== " ") {
+//             output = output + s[i];
+//             if (i === s.length - 1) {
+//                 arr.push(output)
+//             }
+//         }
+//         else {
+//             arr.push(output)
+//             output = ""
+//         }
+//     }
+//     const num = arr.length
+//     for (let i = 0; i < num; i++) {
+//         finalOut = finalOut + arr.pop() + (i === num - 1 ? "" : " ");
+//     }
+//     return finalOut
+// };
+
+
+// var reverseWords = function(s) {
+//     let result = "";  // Final output string
+//     let word = "";    // Temporary word storage
+//     let i = s.length - 1; 
+
+//     while (i >= 0) {
+//         if (s[i] !== " ") {
+//             //Adding form behind
+//             word = s[i] + word; // Build the word
+//             console.log(word)
+//         } else if (word.length > 0) {
+//             //" "
+//             if (result.length > 0) result += " "; // Add space before the next word
+//             result += word;
+//             word = ""; // Reset word storage
+//         }
+//         i--;
+//     }
+
+//     // Add last word if it exists (handling edge cases)
+//     if (word.length > 0) {
+//         if (result.length > 0) result += " ";
+//         result += word;
+//     }
+
+//     return result;
+// };
+console.log(reverseWords("   the sky is blue"))
