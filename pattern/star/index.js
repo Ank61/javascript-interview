@@ -9,7 +9,6 @@
 // Inner loop → Controls columns (for j in range(N))
 // Print each row inside the outer loop.
 
-
 //-----------------------------------------------------------
 // *
 // **
@@ -73,7 +72,6 @@
 // }
 // pattern(5);
 
-
 // function arrowPatter(num) {
 //     //Spaces
 //     for (let i = 1; i < num; i++) {
@@ -109,7 +107,7 @@
 //-----------------------------------------------------------------------------------------------------
 
 //   function stringPattern(str) {
-//     const reverStr = str.split('').reverse().join(''); 
+//     const reverStr = str.split('').reverse().join('');
 //   console.log(str);
 //   for(let i=0 ; i<str.length; i++){
 //     let output ="";
@@ -146,44 +144,108 @@
 // **        **
 // *          *
 
-function star(num) {
+// function star(num) {
 
-    for (let i = 0; i <= num; i++) {
-        let finalLine = "";
+//     for (let i = 0; i <= num; i++) {
+//         let finalLine = "";
 
-        for (let j = 0; j <= i; j++) {
-            finalLine = finalLine + "*";
+//         for (let j = 0; j <= i; j++) {
+//             finalLine = finalLine + "*";
+//         }
+
+//         for (let k = 0; k <= num - i; k++) {
+//             finalLine = finalLine + " ";
+//         }
+
+//         for (let j = num - i; j > 1; j--) {
+//             finalLine = finalLine + " ";
+//         }
+
+//         for (let k = 0; k <= i; k++) {
+//             finalLine = finalLine + "*";
+//         }
+//         console.log(finalLine)
+//     }
+
+//     for (let i = 0; i <= num; i++) {
+//         let finalLines = "";
+
+//         for (let j = num-i; j>1; j--) {
+//             finalLines = finalLines + "*";
+//         }
+
+//         // for (let k = 0; k <= num - i; k++) {
+//         //     finalLine = finalLine + " ";
+//         // }
+//         console.log(finalLines)
+//     }
+// }
+
+// star(6)
+
+//-----------------------------------------------------------------------------------------------------
+
+//         *
+//       *   *
+//     *       *
+//   *           *
+// * * * * * * * * *
+
+// function hollowTriangle(n) {
+//   for (let i = 0; i < n; i++) {
+//     let output = "";
+//     //Spaces
+//     for (let j = n; j >= i; j--) {
+//       output = output + " ";
+//     }
+//     //Last Star
+//     output = output + "*";
+
+//     for (let j = 1; j < 2 * i; j++) {
+//       if (i === n - 1) {
+//         output = output + "*";
+//       }
+//       else{
+//         output = output + " ";
+//       }
+//     }
+//     if (i !== 0) {
+//       output = output + "*";
+//     }
+
+//     console.log(output);
+//   }
+// }
+// console.log(hollowTriangle(5));
+
+//-----------------------------------------------------------------------------------------------------
+
+// 1
+// 1 1
+// 1 2 1
+// 1 3 3 1
+// 1 4 6 4 1
+
+function pascal(n) {
+    let triangle = [];
+  
+    for (let i = 0; i < n; i++) {
+      let row = []; 
+  
+      for (let j = 0; j <= i; j++) {
+        if (j === 0 || j === i) {
+          row.push(1); // First and last elements are always 1
+        } else {
+          row.push(triangle[i - 1][j - 1] + triangle[i - 1][j]); // Sum of above two elements
         }
-
-        for (let k = 0; k <= num - i; k++) {
-            finalLine = finalLine + " ";
-        }
-
-
-        for (let j = num - i; j > 1; j--) {
-            finalLine = finalLine + " ";
-        }
-
-        for (let k = 0; k <= i; k++) {
-            finalLine = finalLine + "*";
-        }
-        console.log(finalLine)
+      }
+  
+      triangle.push(row);
+      console.log(row.join(" ")); // Print the row
     }
-
-
-
-    for (let i = 0; i <= num; i++) {
-        let finalLines = "";
-
-        for (let j = num-i; j>1; j--) {
-            finalLines = finalLines + "*";
-        }
-
-        // for (let k = 0; k <= num - i; k++) {
-        //     finalLine = finalLine + " ";
-        // }
-        console.log(finalLines)
-    }
-}
-
-star(6)
+  
+    // return triangle;
+  }
+  
+  // ✅ Example Test Case
+  console.log(pascal(5));
