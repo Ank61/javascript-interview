@@ -88,7 +88,7 @@
 //       }
 //       console.log(string);
 //     }
-  
+
 //     //For below
 //     for (let i = num; i > 1; i--) {
 //       let string = "";
@@ -103,9 +103,10 @@
 //       console.log(string);
 //     }
 //   }
-  
+
 //   arrowPatter(5);
 
+//-----------------------------------------------------------------------------------------------------
 
 //   function stringPattern(str) {
 //     const reverStr = str.split('').reverse().join(''); 
@@ -129,3 +130,60 @@
 // }
 
 // stringPattern("ankithello");
+
+//-----------------------------------------------------------------------------------------------------
+
+// *          *
+// **        **
+// ***      ***
+// ****    ****
+// *****  *****
+// ************
+// ************
+// *****  *****
+// ****    ****
+// ***      ***
+// **        **
+// *          *
+
+function star(num) {
+
+    for (let i = 0; i <= num; i++) {
+        let finalLine = "";
+
+        for (let j = 0; j <= i; j++) {
+            finalLine = finalLine + "*";
+        }
+
+        for (let k = 0; k <= num - i; k++) {
+            finalLine = finalLine + " ";
+        }
+
+
+        for (let j = num - i; j > 1; j--) {
+            finalLine = finalLine + " ";
+        }
+
+        for (let k = 0; k <= i; k++) {
+            finalLine = finalLine + "*";
+        }
+        console.log(finalLine)
+    }
+
+
+
+    for (let i = 0; i <= num; i++) {
+        let finalLines = "";
+
+        for (let j = num-i; j>1; j--) {
+            finalLines = finalLines + "*";
+        }
+
+        // for (let k = 0; k <= num - i; k++) {
+        //     finalLine = finalLine + " ";
+        // }
+        console.log(finalLines)
+    }
+}
+
+star(6)
