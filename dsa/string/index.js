@@ -78,7 +78,7 @@
 
 // console.log(isSubsequence("abc", "ahbgdc"));
 
-//EXAMPLE : 
+//EXAMPLE :
 // Example 1:
 // Input: s = "the sky is blue"
 // Output: "blue is sky the"
@@ -154,7 +154,6 @@
 // const reverse = compress(["a", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b"]);
 // console.log(reverse);
 
-
 //-------------------------------------------------------------------------------------------
 // Example 1:
 
@@ -200,7 +199,6 @@
 // const result = gcdOfStrings("ABABAB", "ABAB");
 // console.log(result); // Output: "AB"
 
-
 // function firstLetter(str) {
 //   let firstLetter = false;
 //   let output = "";
@@ -226,28 +224,56 @@
 
 //-------------------------------------------------------------------------------------------
 
-function reverseString(str) {
-  const originalStr = str + " ";
-  const arr = [];
-  let dummy = "";
-  let output = "";
-  let i = 0;
-  while (i <= str.length) {
-    if (originalStr[i] !== " ") {
-      dummy = dummy + originalStr[i];
-    } else {
-      arr.push(dummy);
-      dummy = "";
-    }
-    i++;
-  }
-  while (arr.length > 0) {
-    output += arr.pop();
-    if (arr.length > 0) {
-      output += " ";
-    }
-  }
+// function reverseString(str) {
+//   const originalStr = str + " ";
+//   const arr = [];
+//   let dummy = "";
+//   let output = "";
+//   let i = 0;
+//   while (i <= str.length) {
+//     if (originalStr[i] !== " ") {
+//       dummy = dummy + originalStr[i];
+//     } else {
+//       arr.push(dummy);
+//       dummy = "";
+//     }
+//     i++;
+//   }
+//   while (arr.length > 0) {
+//     output += arr.pop();
+//     if (arr.length > 0) {
+//       output += " ";
+//     }
+//   }
 
-  return output;
+//   return output;
+// }
+// console.log(reverseString("Hello Ankit is my name"));
+
+//-------------------------------------------------------------------------------------------
+// Input: s = "abcabcbb"
+// Output: 3
+// Explanation: The answer is "abc", with the length of 3.
+
+function longestSubs(str) {
+  const map = new Map();
+  let count = 0;
+  let maxCount = 0;
+  let i = 0;
+  while (i < str.length) {
+    if(!map.has(str[i])){
+      map.set(str[i]);
+      count++;
+    }else{
+      if(count > maxCount){
+        maxCount = count;
+      }
+      map.delete(str[i]);
+      count = 0;
+    }
+    i++
+  }
+  return maxCount
 }
-console.log(reverseString("Hello Ankit is my name"));
+
+console.log(longestSubs("abcdabchu"));
