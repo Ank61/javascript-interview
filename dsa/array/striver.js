@@ -113,13 +113,12 @@
 //     return nums.length - count
 // };
 
-
 // var removeDuplicates = function (nums) {
 //     let k = 0;
 
 //     for (let i = 0; i < nums.length; i++) {
 //         if (i === 0 || nums[i] !== nums[i - 1]) {
-//             nums[k] = nums[i]; 
+//             nums[k] = nums[i];
 //             k++;
 //         }
 //     }
@@ -137,10 +136,9 @@
 // Input: nums = [1,2,3,4,5,6,7], k = 3
 // Output: [5,6,7,1,2,3,4]
 
-
 // var rotate = function(nums, k) {
 //     let n = nums.length;
-//     k = k % n; 
+//     k = k % n;
 
 //     function reverse(start, end) {
 //         while (start < end) {
@@ -150,8 +148,8 @@
 //     }
 
 //     reverse(0, n - 1);
-//     reverse(0, k - 1); 
-//     reverse(k, n - 1); 
+//     reverse(0, k - 1);
+//     reverse(k, n - 1);
 
 //     return nums;
 // };
@@ -199,5 +197,95 @@
 // }
 // console.log(moveZeroes([1,0]))
 
+//---------------------------------------------------------------------------------------------
+
+// Input: arr[] = [1, 2, 3, 4, 6], k = 6
+// Output: true
+// Exlpanation: Since, 6 is present in
+// the array at index 4 (0-based indexing), output is true.
+
+// function searchInSorted(arr, k) {
+//   if (arr.length < 1) {
+//     return false;
+//   }
+//   const mid = Math.floor(arr.length / 2);
+//   if (arr[mid] === k) {
+//     return true;
+//   } else {
+//     if (arr[mid] < k) {
+//       return searchInSorted(arr.slice(mid + 1), k);
+//     } else {
+//       return searchInSorted(arr.slice(0, mid), k);
+//     }
+//   }
+// }
+// console.log(searchInSorted([1, 2, 3, 4, 6], 6));
 
 //---------------------------------------------------------------------------------------------
+// Input: nums = [3,0,1]
+
+// Output: 2
+
+// Explanation:
+
+// n = 3 since there are 3 numbers, so all numbers are in the range [0,3]. 2 is the missing number in the range since it does not appear in nums.
+
+// var missingNumber = function (nums) {
+//   const sortedNumsLength = nums.sort((a, b) => a - b);
+//   const arrayNums = [];
+//   for (let i = 0; i <= nums.length; i++) {
+//     arrayNums.push(i);
+//   }
+//   let count = 0;
+//   const maxLength =
+//     sortedNumsLength.length > arrayNums.length ? sortedNumsLength : arrayNums;
+//   const minLength =
+//     sortedNumsLength.length < arrayNums.length ? sortedNumsLength : arrayNums;
+//   for (let i = 0; i < maxLength.length; i++) {
+//     if (maxLength[i] !== minLength[count]) {
+//       return count;
+//     }
+//     count++;
+//   }
+//   return 0;
+// };
+
+// var missingNumber = function(nums) {
+//     const n = nums.length;
+//     const expectedSum = (n * (n + 1)) / 2;  // Sum of first n natural numbers
+//     const actualSum = nums.reduce((sum, num) => sum + num, 0); // Sum of elements in nums
+//     return expectedSum - actualSum; // The missing number
+// };
+
+// // ✅ Example Test Cases
+// console.log(missingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1])); // Output: 8
+// console.log(missingNumber([3, 0, 1])); // Output: 2
+// console.log(missingNumber([0, 1])); // Output: 2
+// console.log(missingNumber([1])); // Output: 0
+
+// console.log(missingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1]));
+
+//-----------------------------------------------------------------------------------
+
+// function findUnion(a, b) {
+//   const map = new Map();
+//   for (let i = 0; i < a.length; i++) {
+//     if (!map.has(a[i])) {
+//         map.set(a[i],a[i]);
+//     }
+//   }
+
+//   for (let i = 0; i < b.length; i++) {
+//     if (!map.has(b[i])) {
+//         map.set(b[i],b[i]);
+//     }
+//   }
+
+//   return [...map.values()]
+// }
+
+// console.log(findUnion([1, 2, 3, 4, 5], [1, 2, 3, 6, 7]));
+
+if (null) {
+    console.log('This will not execute'); // null is falsy
+  }
