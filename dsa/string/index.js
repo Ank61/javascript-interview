@@ -222,7 +222,6 @@
 
 // console.log(firstLetter("my name hello ankit"))
 
-
 //------------------------------------------------------------------------------------------------------------
 
 // Example 1:
@@ -236,7 +235,6 @@
 // Input: haystack = "leetcode", needle = "leeto"
 // Output: -1
 // Explanation: "leeto" did not occur in "leetcode", so we return -1.
-
 
 // var strStr = function (haystack, needle) {
 //   let hayIndex = 0;
@@ -261,7 +259,6 @@
 //     return max - min
 //   }
 // };
-
 
 // var strStr = function (haystack, needle) {
 //   if (needle === "") return 0; // Edge case: Empty needle
@@ -289,7 +286,6 @@
 //   return -1; // No match found
 // };
 // console.log(strStr("hello", "ll"))
-
 
 //---------------------------------------------------------------------------------------------
 
@@ -360,11 +356,10 @@
 //     return finalOut
 // };
 
-
 // var reverseWords = function(s) {
 //     let result = "";  // Final output string
 //     let word = "";    // Temporary word storage
-//     let i = s.length - 1; 
+//     let i = s.length - 1;
 
 //     while (i >= 0) {
 //         if (s[i] !== " ") {
@@ -388,7 +383,128 @@
 
 //     return result;
 // };
-// console.log(reverseWords("   the sky is blue"))
+// // console.log(reverseWords("   the sky is blue"))
+
+//-------------------------------------------------------------------
+
+// Hello World => olleH dlroW
+
+// function reverseText(str){
+//     str = str+ " ";
+//     let output = "";
+//     let stri = "";
+//     for(let i=0 ; i<str.length; i++){
+//         if(str[i]!==" "){
+//             stri =  str[i] + stri;
+//         }
+//         else{
+//             output  = output + " " +stri;
+//             stri = ""
+//         }
+//     }
+//     return output;
+// }
+// console.log(reverseText("Hello World"))
+
+//-------------------------------------------------------------------
+//Two strings s and t are isomorphic if the characters in s
+// can be replaced to get t.
+
+//Input: s = "egg", t = "add"
+// Output: true
+// Explanation:
+// The strings s and t can be made identical by:
+// Mapping 'e' to 'a'.
+// Mapping 'g' to 'd'.
+// Example 2:
+
+// Input: s = "foo", t = "bar"
+// Output: false
+// Explanation:
+// The strings s and t can not be made identical as 'o' needs to be mapped to both 'a' and 'r'.
+
+// function isomorphic(s, t) {
+//   if (s.length !== t.length) {
+//     return false;
+//   }
+//   let convertedText = "";
+//   const map = new Map();
+//   for (let i = 0; i < s.length; i++) {
+//     if (!map.has(s[i])) {
+//       map.set(s[i], 1);
+//     } else {
+//       let count = map.get(s[i]);
+//       map.delete(s[i]);
+//       map.set(s[i], count + 1);
+//     }
+//   }
+//   const map2 = new Map();
+//   for (let i = 0; i < s.length; i++) {
+//     if (!map2.has(t[i])) {
+//       map2.set(t[i], 1);
+//     } else {
+//       let count = map2.get(t[i]);
+//       map2.delete(t[i]);
+//       map2.set(t[i], count + 1);
+//     }
+//   }
+//   console.log(map);
+//   console.log(map2);
+//   if (map.size !== map2.size) {
+//     return false;
+//   }
+//   map.forEach((value, key) => {
+//     map2.forEach((value2, key2) => {
+//       if (value !== value2) {
+//         return false;
+//       }
+//       else{
+//         map2.delete(key2);
+//         map.delete(key);
+//       }
+//     });
+//   });
+//   return true;
+// }
+
+
+var isIsomorphic = function(s, t) {
+    // Early exit if lengths differ.
+    if (s.length !== t.length) return false;
+  
+    const mapST = new Map(); // Map from s -> t
+    const mapTS = new Map(); // Map from t -> s
+  
+    for (let i = 0; i < s.length; i++) {
+      const charS = s[i];
+      const charT = t[i];
+  
+      // Check mapping from s to t.
+      if (mapST.has(charS)) {
+        if (mapST.get(charS) !== charT) return false;
+      } else {
+        mapST.set(charS, charT);
+      }
+  
+      // Check mapping from t to s.
+      if (mapTS.has(charT)) {
+        if (mapTS.get(charT) !== charS) return false;
+      } else {
+        mapTS.set(charT, charS);
+      }
+    }
+  
+    return true;
+  };
+  
+  // Example usage:
+  console.log(isIsomorphic("egg", "add")); // true
+  console.log(isIsomorphic("foo", "bar")); // false
+  console.log(isIsomorphic("paper", "title")); // true
+  
+
+console.log(isomorphic("foo", "bar"));
+
 
 //----------------------------------------------------------------------------------
 // Input: num = "52"

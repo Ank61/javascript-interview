@@ -226,26 +226,26 @@
 // 1 3 3 1
 // 1 4 6 4 1
 
-function pascal(n) {
-    let triangle = [];
+// function pascal(n) {
+//     let triangle = [];
   
-    for (let i = 0; i < n; i++) {
-      let row = []; 
+//     for (let i = 0; i < n; i++) {
+//       let row = []; 
   
-      for (let j = 0; j <= i; j++) {
-        if (j === 0 || j === i) {
-          row.push(1); // First and last elements are always 1
-        } else {
-          row.push(triangle[i - 1][j - 1] + triangle[i - 1][j]); // Sum of above two elements
-        }
-      }
+//       for (let j = 0; j <= i; j++) {
+//         if (j === 0 || j === i) {
+//           row.push(1); // First and last elements are always 1
+//         } else {
+//           row.push(triangle[i - 1][j - 1] + triangle[i - 1][j]); // Sum of above two elements
+//         }
+//       }
   
-      triangle.push(row);
-      console.log(row.join(" ")); // Print the row
-    }
+//       triangle.push(row);
+//       console.log(row.join(" ")); // Print the row
+//     }
   
-    // return triangle;
-  }
+//     // return triangle;
+//   }
   
-  // ✅ Example Test Case
-  console.log(pascal(5));
+//   // ✅ Example Test Case
+//   console.log(pascal(5));
