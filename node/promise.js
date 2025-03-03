@@ -2,7 +2,7 @@
 const fetchUser = () => new Promise(resolve => setTimeout(() => resolve({ id: 1, name: 'Alice' }), 1000));
 const fetchPosts = () => new Promise(resolve => setTimeout(() => resolve(['Post 1', 'Post 2']), 1500));
 const fetchComments = () => new Promise((resolve,reject) => setTimeout(() => reject(['Comment 1', 'Comment 2']), 1200));
-
+//Reoslve: All sucess or error for reject
 // Promise.all([fetchUser(), fetchPosts(), fetchComments()])
 //   .then(results => {
 //     const [user, posts, comments] = results;
@@ -26,7 +26,8 @@ const fetchComments = () => new Promise((resolve,reject) => setTimeout(() => rej
 //     console.error('Error:', error.message);
 //   });
 
-//Example 3 : allSettled() : Returns only when all the promises are done even if the reject promises.
+//Example 3 : allSettled() : Returns only when all the promises are done even 
+//if the reject promises.
 // const fetchDataWithErrors = () => {
 //     return Promise.allSettled([fetchUser(), fetchPosts(), fetchComments()])
 //       .then(results => {

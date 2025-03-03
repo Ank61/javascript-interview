@@ -388,4 +388,77 @@
 
 //     return result;
 // };
-console.log(reverseWords("   the sky is blue"))
+// console.log(reverseWords("   the sky is blue"))
+
+//----------------------------------------------------------------------------------
+// Input: num = "52"
+// Output: "5"
+// Explanation: The only non-empty substrings are "5", "2", and "52". "5" is the only odd number.
+
+// var largestOddNumber = function(num) {
+//     let temp = num;
+//     let j=num.length;
+//     while(j>0){
+//         const str = parseInt(temp);
+//         if(str%2!==0){
+//             //odd found
+//             return temp.toString();
+//         }
+//         else{
+//             j--;
+//             temp = num.slice(0,j);
+//         }
+//     }
+//     return ""
+// };
+//Optimised :
+// var largestOddNumber = function(num) {
+//     for (let i = num.length - 1; i >= 0; i--) {
+//         if (parseInt(num[i]) % 2 !== 0) {
+//             return num.slice(0, i + 1);
+//         }
+//     }
+//     return "";
+// };
+// console.log(largestOddNumber("52"))
+
+//------------------------------------------------------------------------------------------
+
+// var longestCommonPrefix = function(strs) {
+//     let common = "";
+//     let i = 0;
+//     const firstWord = strs[0];
+//     let loopBeak = false;
+//     while(i<firstWord.length && !loopBeak ){
+//         for(let j=1; j<strs.length ; j++){
+//             if(strs[j][i]=== firstWord[i]){
+//                 common =common + firstWord[i];
+//                 i++;
+//             }
+//             else{
+//                 common = common.slice(0,i-1);
+//                 loopBeak = true;
+//             }
+//         }
+//     }
+//     return common
+// };
+
+// var longestCommonPrefix = function(strs) {
+//     if (!strs.length) return "";
+
+//     for (let i = 0; i < strs[0].length; i++) {
+//         for (let j = 1; j < strs.length; j++) {
+//             if (strs[j][i] !== strs[0][i]) {
+//                 return strs[0].slice(0, i);
+//             }
+//         }
+//     }
+//     return strs[0];
+// };
+
+// console.log(longestCommonPrefix(["flower","flow","flight"]))
+
+//------------------------------------------------------------------------------------------
+
+
