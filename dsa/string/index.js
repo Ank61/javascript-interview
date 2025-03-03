@@ -468,42 +468,42 @@
 // }
 
 
-var isIsomorphic = function(s, t) {
-    // Early exit if lengths differ.
-    if (s.length !== t.length) return false;
-  
-    const mapST = new Map(); // Map from s -> t
-    const mapTS = new Map(); // Map from t -> s
-  
-    for (let i = 0; i < s.length; i++) {
-      const charS = s[i];
-      const charT = t[i];
-  
-      // Check mapping from s to t.
-      if (mapST.has(charS)) {
-        if (mapST.get(charS) !== charT) return false;
-      } else {
-        mapST.set(charS, charT);
-      }
-  
-      // Check mapping from t to s.
-      if (mapTS.has(charT)) {
-        if (mapTS.get(charT) !== charS) return false;
-      } else {
-        mapTS.set(charT, charS);
-      }
-    }
-  
-    return true;
-  };
-  
-  // Example usage:
-  console.log(isIsomorphic("egg", "add")); // true
-  console.log(isIsomorphic("foo", "bar")); // false
-  console.log(isIsomorphic("paper", "title")); // true
-  
+// var isIsomorphic = function(s, t) {
+//     // Early exit if lengths differ.
+//     if (s.length !== t.length) return false;
 
-console.log(isomorphic("foo", "bar"));
+//     const mapST = new Map(); // Map from s -> t
+//     const mapTS = new Map(); // Map from t -> s
+
+//     for (let i = 0; i < s.length; i++) {
+//       const charS = s[i];
+//       const charT = t[i];
+
+//       // Check mapping from s to t.
+//       if (mapST.has(charS)) {
+//         if (mapST.get(charS) !== charT) return false;
+//       } else {
+//         mapST.set(charS, charT);
+//       }
+
+//       // Check mapping from t to s.
+//       if (mapTS.has(charT)) {
+//         if (mapTS.get(charT) !== charS) return false;
+//       } else {
+//         mapTS.set(charT, charS);
+//       }
+//     }
+
+//     return true;
+//   };
+
+//   // Example usage:
+//   console.log(isIsomorphic("egg", "add")); // true
+//   console.log(isIsomorphic("foo", "bar")); // false
+//   console.log(isIsomorphic("paper", "title")); // true
+
+
+// console.log(isomorphic("foo", "bar"));
 
 
 //----------------------------------------------------------------------------------
@@ -577,4 +577,70 @@ console.log(isomorphic("foo", "bar"));
 
 //------------------------------------------------------------------------------------------
 
+// Given two strings s and goal, return true if and only if s can become goal after some number of shifts on s.
+// A shift on s consists of moving the leftmost character of s to the rightmost position.
+// For example, if s = "abcde", then it will be "bcdea" after one shift.
 
+// Example 1:
+// Input: s = "abcde", goal = "cdeab"
+// Output: true
+
+// Example 2:
+// Input: s = "abcde", goal = "abced"
+// Output: false
+
+// var rotateString = function (s, goal) {
+//   let output = s;
+//   for (let i = 0; i < s.length; i++) {
+//     const rotated  = rotate(output)
+//     if (rotated === goal) {
+//       return true;
+//     }
+//     output = rotated;
+//   }
+//   return false
+// };
+
+// function rotate(str) {
+//   let dummy = "";
+//   for (let j = 1; j < str.length; j++) {
+//     dummy = dummy + str[j];
+//     if (j === str.length - 1) {
+//       dummy = dummy + str[0];
+//     }
+//   }
+//   return dummy;
+// }
+// console.log(rotateString("abcde", "abced"))
+
+//------------------------------------------------------------------------------------------
+//Input: s = "anagram", t = "nagaram"
+//Output: true
+
+// Input: s = "rat", t = "car"
+// Output: false
+
+var isAnagram = function (s, t) {
+  if (s.length !== t.length) return false;
+
+  const charCount = new Map();
+  for (let i = 0; i < s.length; i++) {
+    if (!charCount.has(s[i])) {
+      charCount.set(s[i], 1);
+    }
+    else {
+      const count = charCount.get(s[i]);
+      charCount.delete(s[i]);
+      charCount.set(s[i], count + 1);
+    }
+  }
+  for (let char of t) {
+    if (!charCount.has(char)) return false;
+    charCount.set(char, charCount.get(char) - 1);
+    if (charCount.get(char) < 0) return false;
+  }
+
+  return true;
+};
+
+console.log(isAnagram("rat", "car"))
