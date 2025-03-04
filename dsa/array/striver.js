@@ -368,3 +368,66 @@
 // // };
 
 // console.log(sortColors([2, 0, 2, 1, 1, 0]));
+
+//------------------------------------------------------------------------------------------
+
+// Example 1:
+// Input: nums = [2,2,1]
+// Output: 1
+
+// Example 2:
+// Input: nums = [4,1,2,1,2]
+// Output: 4
+
+// var singleNumber = function (nums) {
+//   if(nums.length==1){
+//     return nums[0]
+//   }
+//   const map = new Map();
+//   for (let i = 0; i < nums.length; i++) {
+//     if (!map.has(nums[i])) {
+//       map.set(nums[i], 1);
+//     }
+//     else {
+//       const count = map.get(nums[i]);
+//       map.set(nums[i], count + 1);
+//     }
+//   }
+
+//   for (const [key, value] of map) {
+//     if (value === 1) {
+//       return key
+//     }
+//   }
+//   return null
+// };
+
+// console.log(singleNumber([4, 1, 2, 1, 2]))
+
+//----------------------------------------------------------------------------------------------
+// Input: arr[] = [10, 5, 2, 7, 1, -10], k = 15
+// Output: 6
+// Explanation: Subarrays with sum = 15 are [5, 2, 7, 1], [10, 5] and [10, 5, 2, 7, 1, -10]. 
+// The length of the longest subarray with a sum of 15 is 6.
+
+function longestSubarray(arr, k) {
+  const final = [];
+  for (let i = 0; i < arr.length; i++) {
+    const output = [];
+    let sum = 0;
+    const map = new Map()
+    for (let j = i + 1; j < arr.length; j++) {
+      sum += arr[j];
+      if (sum === k) {
+        output.push()
+        if (final.length < output.length) {
+          final = [...output];
+          output = [];
+        }
+      }
+    }
+  }
+  return final
+}
+
+console.log(longestSubarray([10, 5, 2, 7, 1, -10], 15))

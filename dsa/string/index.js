@@ -383,7 +383,7 @@
 
 //     return result;
 // };
-// console.log(reverseWords("   the sky is blue"))
+// // console.log(reverseWords("   the sky is blue"))
 
 //-------------------------------------------------------------------
 
@@ -467,6 +467,183 @@
 //   return true;
 // }
 
+
+// var isIsomorphic = function(s, t) {
+//     // Early exit if lengths differ.
+//     if (s.length !== t.length) return false;
+
+//     const mapST = new Map(); // Map from s -> t
+//     const mapTS = new Map(); // Map from t -> s
+
+//     for (let i = 0; i < s.length; i++) {
+//       const charS = s[i];
+//       const charT = t[i];
+
+//       // Check mapping from s to t.
+//       if (mapST.has(charS)) {
+//         if (mapST.get(charS) !== charT) return false;
+//       } else {
+//         mapST.set(charS, charT);
+//       }
+
+//       // Check mapping from t to s.
+//       if (mapTS.has(charT)) {
+//         if (mapTS.get(charT) !== charS) return false;
+//       } else {
+//         mapTS.set(charT, charS);
+//       }
+//     }
+
+//     return true;
+//   };
+
+//   // Example usage:
+//   console.log(isIsomorphic("egg", "add")); // true
+//   console.log(isIsomorphic("foo", "bar")); // false
+//   console.log(isIsomorphic("paper", "title")); // true
+
+
+// console.log(isomorphic("foo", "bar"));
+
+
+//----------------------------------------------------------------------------------
+// Input: num = "52"
+// Output: "5"
+// Explanation: The only non-empty substrings are "5", "2", and "52". "5" is the only odd number.
+
+// var largestOddNumber = function(num) {
+//     let temp = num;
+//     let j=num.length;
+//     while(j>0){
+//         const str = parseInt(temp);
+//         if(str%2!==0){
+//             //odd found
+//             return temp.toString();
+//         }
+//         else{
+//             j--;
+//             temp = num.slice(0,j);
+//         }
+//     }
+//     return ""
+// };
+//Optimised :
+// var largestOddNumber = function(num) {
+//     for (let i = num.length - 1; i >= 0; i--) {
+//         if (parseInt(num[i]) % 2 !== 0) {
+//             return num.slice(0, i + 1);
+//         }
+//     }
+//     return "";
+// };
+// console.log(largestOddNumber("52"))
+
+//------------------------------------------------------------------------------------------
+
+// var longestCommonPrefix = function(strs) {
+//     let common = "";
+//     let i = 0;
+//     const firstWord = strs[0];
+//     let loopBeak = false;
+//     while(i<firstWord.length && !loopBeak ){
+//         for(let j=1; j<strs.length ; j++){
+//             if(strs[j][i]=== firstWord[i]){
+//                 common =common + firstWord[i];
+//                 i++;
+//             }
+//             else{
+//                 common = common.slice(0,i-1);
+//                 loopBeak = true;
+//             }
+//         }
+//     }
+//     return common
+// };
+
+// var longestCommonPrefix = function(strs) {
+//     if (!strs.length) return "";
+
+//     for (let i = 0; i < strs[0].length; i++) {
+//         for (let j = 1; j < strs.length; j++) {
+//             if (strs[j][i] !== strs[0][i]) {
+//                 return strs[0].slice(0, i);
+//             }
+//         }
+//     }
+//     return strs[0];
+// };
+
+// console.log(longestCommonPrefix(["flower","flow","flight"]))
+
+//------------------------------------------------------------------------------------------
+
+// Given two strings s and goal, return true if and only if s can become goal after some number of shifts on s.
+// A shift on s consists of moving the leftmost character of s to the rightmost position.
+// For example, if s = "abcde", then it will be "bcdea" after one shift.
+
+// Example 1:
+// Input: s = "abcde", goal = "cdeab"
+// Output: true
+
+// Example 2:
+// Input: s = "abcde", goal = "abced"
+// Output: false
+
+// var rotateString = function (s, goal) {
+//   let output = s;
+//   for (let i = 0; i < s.length; i++) {
+//     const rotated  = rotate(output)
+//     if (rotated === goal) {
+//       return true;
+//     }
+//     output = rotated;
+//   }
+//   return false
+// };
+
+// function rotate(str) {
+//   let dummy = "";
+//   for (let j = 1; j < str.length; j++) {
+//     dummy = dummy + str[j];
+//     if (j === str.length - 1) {
+//       dummy = dummy + str[0];
+//     }
+//   }
+//   return dummy;
+// }
+// console.log(rotateString("abcde", "abced"))
+
+//------------------------------------------------------------------------------------------
+//Input: s = "anagram", t = "nagaram"
+//Output: true
+
+// Input: s = "rat", t = "car"
+// Output: false
+
+var isAnagram = function (s, t) {
+  if (s.length !== t.length) return false;
+
+  const charCount = new Map();
+  for (let i = 0; i < s.length; i++) {
+    if (!charCount.has(s[i])) {
+      charCount.set(s[i], 1);
+    }
+    else {
+      const count = charCount.get(s[i]);
+      charCount.delete(s[i]);
+      charCount.set(s[i], count + 1);
+    }
+  }
+  for (let char of t) {
+    if (!charCount.has(char)) return false;
+    charCount.set(char, charCount.get(char) - 1);
+    if (charCount.get(char) < 0) return false;
+  }
+
+  return true;
+};
+
+console.log(isAnagram("rat", "car"))
 // var isIsomorphic = function(s, t) {
 //     // Early exit if lengths differ.
 //     if (s.length !== t.length) return false;
