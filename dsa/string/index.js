@@ -467,40 +467,101 @@
 //   return true;
 // }
 
+// var isIsomorphic = function(s, t) {
+//     // Early exit if lengths differ.
+//     if (s.length !== t.length) return false;
 
-var isIsomorphic = function(s, t) {
-    // Early exit if lengths differ.
-    if (s.length !== t.length) return false;
-  
-    const mapST = new Map(); // Map from s -> t
-    const mapTS = new Map(); // Map from t -> s
-  
-    for (let i = 0; i < s.length; i++) {
-      const charS = s[i];
-      const charT = t[i];
-  
-      // Check mapping from s to t.
-      if (mapST.has(charS)) {
-        if (mapST.get(charS) !== charT) return false;
-      } else {
-        mapST.set(charS, charT);
-      }
-  
-      // Check mapping from t to s.
-      if (mapTS.has(charT)) {
-        if (mapTS.get(charT) !== charS) return false;
-      } else {
-        mapTS.set(charT, charS);
-      }
-    }
-  
-    return true;
-  };
-  
-  // Example usage:
-  console.log(isIsomorphic("egg", "add")); // true
-  console.log(isIsomorphic("foo", "bar")); // false
-  console.log(isIsomorphic("paper", "title")); // true
-  
+//     const mapST = new Map(); // Map from s -> t
+//     const mapTS = new Map(); // Map from t -> s
 
-console.log(isomorphic("foo", "bar"));
+//     for (let i = 0; i < s.length; i++) {
+//       const charS = s[i];
+//       const charT = t[i];
+
+//       // Check mapping from s to t.
+//       if (mapST.has(charS)) {
+//         if (mapST.get(charS) !== charT) return false;
+//       } else {
+//         mapST.set(charS, charT);
+//       }
+
+//       // Check mapping from t to s.
+//       if (mapTS.has(charT)) {
+//         if (mapTS.get(charT) !== charS) return false;
+//       } else {
+//         mapTS.set(charT, charS);
+//       }
+//     }
+
+//     return true;
+//   };
+
+//   // Example usage:
+//   console.log(isIsomorphic("egg", "add")); // true
+//   console.log(isIsomorphic("foo", "bar")); // false
+//   console.log(isIsomorphic("paper", "title")); // true
+
+// console.log(isomorphic("foo", "bar"));
+//-----------------------------------------------------------------------------
+
+// var frequencySort = function (s) {
+//   let output = "";
+//   const map = new Map();
+//   for (let i = 0; i < s.length; i++) {
+//     if (!map.has(s[i])) {
+//       map.set(s[i], 1);
+//     } else {
+//       const count = map.get(s[i]);
+//       map.set(s[i], count + 1);
+//     }
+//   }
+//   let arr = new Array(...map);
+//   for (let j = 0; j < arr.length; j++) {
+//     for (let k = j + 1; k < arr.length; k++) {
+//       if (arr[k][1] > arr[j][1]) {
+//         arr = swap(arr, j, k);
+//       }
+//     }
+//   }
+
+//   for (let o = 0; o < arr.length; o++) {
+//     for (let j = 0; j < arr[o][1]; j++) {
+//       output = output + arr[o][0];
+//     }
+//   }
+//   return output;
+// };
+
+// function swap(arr, i, j) {
+//   const temp = arr[i];
+//   arr[i] = arr[j];
+//   arr[j] = temp;
+//   return arr;
+// }
+// console.log(frequencySort("tree"));
+
+//--------------------------------------------------------------------------------
+
+// Input: s = "(1+(2*3)+((8)/4))+1"
+// Output: 3
+// Explanation:
+// Digit 8 is inside of 3 nested parentheses in the string.
+
+// var maxDepth = function (s) {
+//   let countParah = 0;
+//   let checkCurrent = 0;
+//   for (let i = 0; i < s.length; i++) {
+//     if (s[i] === "(") {
+//       checkCurrent = checkCurrent + 1;
+//       if (checkCurrent > countParah) {
+//         countParah = checkCurrent;
+//       }
+//     } else if (s[i] === ")") {
+//       checkCurrent = checkCurrent - 1;
+//     }
+//   }
+//   return countParah;
+// };
+
+// console.log(maxDepth("(1)+((2))+(((3)))"));
+//---------------------------------------------------------------------------------

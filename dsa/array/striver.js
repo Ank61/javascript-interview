@@ -286,6 +286,85 @@
 
 // console.log(findUnion([1, 2, 3, 4, 5], [1, 2, 3, 6, 7]));
 
-if (null) {
-    console.log('This will not execute'); // null is falsy
-  }
+//-------------------------------------------------------------------------------
+// Input: nums = [2,7,11,15], target = 9
+// Output: [0,1]
+// Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+// var twoSum = function (nums, target) {
+//   for (let i = 0; i < nums.length; i++) {
+//     for (let j = i + 1; j < nums.length; j++) {
+//       const sum = nums[i] + nums[j];
+//       if (sum === target) {
+//         return [i,j]
+//       }
+//     }
+//   }
+// };
+
+// var twoSum = function (nums, target) {
+//   const map = new Map();
+//   for (let i = 0; i < nums.length; i++) {
+//     const short = target - nums[i];
+//     if (map.has(nums[i])) {
+//       return [map.get(nums[i]), i];
+//     }
+//     map.set(short, i);
+//   }
+//   console.log(map);
+// };
+
+// console.log(twoSum([2, 7, 11, 15], 9));
+
+//---------------------------------------------------------------------------------
+
+// Input: nums = [2,0,2,1,1,0]
+// Output: [0,0,1,1,2,2]
+
+// var sortColors = function (nums) {
+//   const map = new Map();
+//   for (let i = 0; i < nums.length; i++) {
+//     if (!map.has(nums[i])) {
+//       map.set(nums[i], 1);
+//     } else {
+//       const count = map.get(nums[i]);
+//       map.set(nums[i], count + 1);
+//     }
+//   }
+
+//   let counter = 0;
+//   let arr = [];
+//   while (arr.length < nums.length) {
+//     const count = map.get(counter) || 0;
+//     if (count > 0) {
+//       arr.push(counter);
+//       map.set(counter, count - 1);
+//     } else {
+//       counter++;
+//     }
+//   }
+//   return arr;
+// };
+
+// // var sortColors = function(nums) {
+// //   let low = 0, mid = 0, high = nums.length - 1;
+  
+// //   // Process elements until mid pointer passes high pointer.
+// //   while (mid <= high) {
+// //     if (nums[mid] === 0) {
+// //       // Swap nums[low] and nums[mid] then increment both pointers.
+// //       [nums[low], nums[mid]] = [nums[mid], nums[low]];
+// //       low++;
+// //       mid++;
+// //     } else if (nums[mid] === 1) {
+// //       // Move mid pointer for white color.
+// //       mid++;
+// //     } else if (nums[mid] === 2) {
+// //       // Swap nums[mid] and nums[high] and decrement high pointer.
+// //       [nums[mid], nums[high]] = [nums[high], nums[mid]];
+// //       high--;
+// //     }
+// //   }
+// // };
+
+// console.log(sortColors([2, 0, 2, 1, 1, 0]));
