@@ -329,22 +329,26 @@
 
 function longestSubarray(arr, k) {
   const final = [];
+  let sum = 0;
+  const map = new Map();
   for (let i = 0; i < arr.length; i++) {
-    const output = [];
-    let sum = 0;
-    const map = new Map()
     for (let j = i + 1; j < arr.length; j++) {
-      sum += arr[j];
+      map.set(arr[i], i);
+      sum = sum + arr[i];
       if (sum === k) {
-        output.push()
-        if (final.length < output.length) {
-          final = [...output];
-          output = [];
+        console.log("sum", sum)
+        let temp = [];
+        for (const [key, value] in map) {
+          console.log(key)
+          temp.push(key);
         }
+        final.push(temp);
+        sum = 0;
       }
     }
+    return final
   }
-  return final
+
 }
 
 console.log(longestSubarray([10, 5, 2, 7, 1, -10], 15))
