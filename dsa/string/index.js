@@ -617,25 +617,25 @@
 // Input: s = "rat", t = "car"
 // Output: false
 
-// var isAnagram = function (s, t) {
-//   if (s.length !== t.length) return false;
+// // var isAnagram = function (s, t) {
+// //   if (s.length !== t.length) return false;
 
-//   const charCount = new Map();
-//   for (let i = 0; i < s.length; i++) {
-//     if (!charCount.has(s[i])) {
-//       charCount.set(s[i], 1);
-//     }
-//     else {
-//       const count = charCount.get(s[i]);
-//       charCount.delete(s[i]);
-//       charCount.set(s[i], count + 1);
-//     }
-//   }
-//   for (let char of t) {
-//     if (!charCount.has(char)) return false;
-//     charCount.set(char, charCount.get(char) - 1);
-//     if (charCount.get(char) < 0) return false;
-//   }
+// //   const charCount = new Map();
+// //   for (let i = 0; i < s.length; i++) {
+// //     if (!charCount.has(s[i])) {
+// //       charCount.set(s[i], 1);
+// //     }
+// //     else {
+// //       const count = charCount.get(s[i]);
+// //       charCount.delete(s[i]);
+// //       charCount.set(s[i], count + 1);
+// //     }
+// //   }
+// //   for (let char of t) {
+// //     if (!charCount.has(char)) return false;
+// //     charCount.set(char, charCount.get(char) - 1);
+// //     if (charCount.get(char) < 0) return false;
+// //   }
 
 //   return true;
 // };
@@ -740,7 +740,202 @@
 // console.log(maxDepth("(1)+((2))+(((3)))"));
 
 //---------------------------------------------------------------------------------
+// Roman to Integer
+// I             1
+// V             5
+// X             10
+// L             50
+// C             100
+// D             500
+// M             1000
 
+// Input: s = "III"
+// Output: 3
+// Explanation: III = 3.
+
+// I can be placed before V (5) and X (10) to make 4 and 9. 
+// X can be placed before L (50) and C (100) to make 40 and 90. 
+// C can be placed before D (500) and M (1000) to make 400 and 900.
+
+
+// var romanToInt = function (s) {
+//   const objAll = {
+//     I: 1,
+//     V: 5,
+//     X: 10,
+//     L: 50,
+//     C: 100,
+//     D: 500,
+//     M: 1000,
+//   }
+//   let output = 0;
+//   for (let i = 0; i < s.length; i++) {
+//     const key = s[i];
+//     const nextKey = s[i + 1];
+
+//     if ((key === "I") &&
+//       (nextKey === "V" || nextKey === "X")) {
+//       //Subtraction Output
+//       output += (objAll[nextKey] - objAll[key]);
+//       i = i + 1;
+
+//     }
+//     else if ((key === "C") &&
+//       (nextKey === "D" || nextKey === "M")) {
+//       output += (objAll[nextKey] - objAll[key]);
+//       i = i + 1;
+//     }
+//     else if ((key === "X") &&
+//       (nextKey === "L" || nextKey === "C")) {
+//       output += (objAll[nextKey] - objAll[key]);
+//       i = i + 1;
+//     }
+//     else {
+//       //simply Add by default
+//       output += objAll[key];
+//     }
+
+//   }
+//   return output;
+// };
+
+// console.log(romanToInt("MCMXCIV"))
+
+
+//---------------------------------------------------------------------------------
+// The algorithm for myAtoi(string s) is as follows:
+
+// Whitespace: Ignore any leading whitespace (" ").
+// Signedness: Determine the sign by checking if the next character is '-' or '+', assuming positivity if neither present.
+// Conversion: Read the integer by skipping leading zeros until a non-digit character is encountered or the end of the string is reached. If no digits were read, then the result is 0.
+// Rounding: If the integer is out of the 32-bit signed integer range [-231, 231 - 1], then round the integer to remain in the range. Specifically, integers less than -231 should be rounded to -231, and integers greater than 231 - 1 should be rounded to 231 - 1.
+
+// Input: s = "42"
+// Output: 42
+
+// var myAtoi = function (s) {
+//   let numberFound = false;
+//   let sign = 1;
+//   let output = "";
+//   const INT_MAX = 2147483647;
+//   const INT_MIN = -2147483648;
+
+//   for (let i = 0; i < s.length; i++) {
+//     if (s[i] === " " && output === "" && !numberFound) {
+//       continue;
+//     }
+//     if (output === "" && !numberFound && (s[i] === '-' || s[i] === '+')) {
+//       sign = (s[i] === '-') ? -1 : 1;
+//       numberFound = true;
+//       continue;
+//     }
+//     if (s[i].match(/[0-9]/)) {
+//       numberFound = true;
+//       output += s[i];
+//     } else {
+//       break;
+//     }
+//   }
+
+//   let result = output === "" ? 0 : sign * parseInt(output, 10);
+
+//   if (result > INT_MAX) return INT_MAX;
+//   if (result < INT_MIN) return INT_MIN;
+
+//   return result;
+// };
+// console.log(myAtoi("0-1"))
+// console.log(myAtoi(" -042"))
+// console.log(myAtoi("1337c0d3"))
+// console.log(myAtoi("words and 987"))
+//----------------------------------------------------------------------------------------------
+// Input: s = "the sky is blue"
+// Output: "blue is sky the"
+
+// var reverseWords = function (s) {
+//   let output = "";
+//   let reverse = "";
+//   let letterTouched = false;
+//   for (let i = 0; i < s.length; i++) {
+//     if (s[i] !== " ") {
+//       letterTouched = true;
+//       reverse = reverse + s[i];
+//       if (i === s.length - 1) {
+//         output = reverse + " " + output;
+//       }
+//     }
+//     else {
+//       if (!letterTouched) {
+//         continue
+//       }
+//       else {
+//         output = reverse + " " + output;
+//         reverse = ""
+//       }
+//     }
+//   }
+
+//   return output
+// };
+
+// console.log(reverseWords("    hello world  "))
+
+//------------------------------------------------------------------------------------------------
+
+//Input: s = "aabcb"
+// Output: 5
+// Explanation: The substrings with non-zero beauty are ["aab","aabc","aabcb","abcb","bcb"], each with beauty equal to 1.
+
+// var beautySum = function (s) {
+//   let totalBeauty = 0;
+
+//   for (let i = 0; i < s.length; i++) {
+//     const map = new Map();
+
+//     for (let j = i; j < s.length; j++) {
+//       map.set(s[j], (map.get(s[j]) || 0) + 1);
+
+//       totalBeauty += calculateBeauty(map);
+//     }
+//   }
+
+//   return totalBeauty;
+// };
+
+// function calculateBeauty(map) {
+//   let maxCount = 0;
+//   let minCount = Infinity;
+
+//   for (const count of map.values()) {
+//     maxCount = Math.max(maxCount, count);
+//     minCount = Math.min(minCount, count);
+//   }
+
+//   return maxCount - minCount;
+// }
+
+// console.log(beautySum("aabcbaa"));
+// console.log(beautySum("aabcb"));
+
+//---------------------------------------------------------------------------------------------------------
+
+// Input: s = "aba", k = 2
+// Output: 3
+// Explanation: The substrings are: "ab", "ba" and "aba".
+
+
+// function countSubstr(s, k) {
+// const app = [];
+
+// for(let i=0; i<=s.length; i++){
+//   const substring = s.slice(i,i+k);
+//     app.push(substring);
+// }
+// console.log(app)
+// return app.length;
+// }
+
+// console.log(countSubstr("cdad",4))
 // Input: s = "the sky is blue"
 // Output: "blue is sky the"
 

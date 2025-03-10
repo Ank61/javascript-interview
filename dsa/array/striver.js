@@ -410,6 +410,29 @@
 // Explanation: Subarrays with sum = 15 are [5, 2, 7, 1], [10, 5] and [10, 5, 2, 7, 1, -10]. 
 // The length of the longest subarray with a sum of 15 is 6.
 
+function longestSubarray(arr, k) {
+  const final = [];
+  let sum = 0;
+  const map = new Map();
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      map.set(arr[i], i);
+      sum = sum + arr[i];
+      if (sum === k) {
+        console.log("sum", sum)
+        let temp = [];
+        for (const [key, value] in map) {
+          console.log(key)
+          temp.push(key);
+        }
+        final.push(temp);
+        sum = 0;
+      }
+    }
+    return final
+  }
+
+}
 // function longestSubarray(arr, k) {
 //   const final = [];
 //   for (let i = 0; i < arr.length; i++) {
