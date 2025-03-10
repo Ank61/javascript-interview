@@ -753,10 +753,9 @@
 // Output: 3
 // Explanation: III = 3.
 
-// I can be placed before V (5) and X (10) to make 4 and 9. 
-// X can be placed before L (50) and C (100) to make 40 and 90. 
+// I can be placed before V (5) and X (10) to make 4 and 9.
+// X can be placed before L (50) and C (100) to make 40 and 90.
 // C can be placed before D (500) and M (1000) to make 400 and 900.
-
 
 // var romanToInt = function (s) {
 //   const objAll = {
@@ -800,7 +799,6 @@
 // };
 
 // console.log(romanToInt("MCMXCIV"))
-
 
 //---------------------------------------------------------------------------------
 // The algorithm for myAtoi(string s) is as follows:
@@ -923,7 +921,6 @@
 // Output: 3
 // Explanation: The substrings are: "ab", "ba" and "aba".
 
-
 // function countSubstr(s, k) {
 // const app = [];
 
@@ -964,13 +961,58 @@
 // };
 
 // console.log(reverseWords("the sky is blue"));
-// console.log(reverseWords("  hello world  "));     
-// console.log(reverseWords("a good   example"));    
-// console.log(reverseWords(""));                    
-// console.log(reverseWords("singleword"));          
+// console.log(reverseWords("  hello world  "));
+// console.log(reverseWords("a good   example"));
+// console.log(reverseWords(""));
+// console.log(reverseWords("singleword"));
+
+//------------------------------------------------------------------------------
+// Input: nums = [3,2,3]
+// Output: 3
+
+// var majorityElement = function (nums) {
+//   const majorityCheck = Math.floor(nums.length / 2);
+//   const map = new Map();
+//   for (let i = 0; i < nums.length; i++) {
+//     if (!map.has(nums[i])) {
+//       map.set(nums[i], 1);
+//     } else {
+//       const count = map.get(nums[i]);
+//       map.delete(nums[i]);
+//       map.set(nums[i], count + 1);
+//     }
+//   }
+//   for (const [key, value] of map) {
+//     if (value > majorityCheck) {
+//       return key;
+//     }
+//   }
+// };
+
+// console.log(majorityElement([2,2,1,1,1,2,2]));
 
 //------------------------------------------------------------------------------
 
-var beautySum = function(s) {
-    
+// Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+// Output: 6
+// Explanation: The subarray [4,-1,2,1] has the largest sum 6.
+
+var maxSubArray = function (nums) {
+  let maxOutput = -Infinity;
+  let subSum = -Infinity;
+  for (let i = 0; i <= nums.length; i++) {
+    subSum = subSum + nums[i];
+    for (let j = i + 1; j <= nums.length; j++) {
+      subSum = subSum + nums[j];
+      if(subSum>maxOutput){
+        maxOutput = subSum;
+      }
+      else{
+        subSum = 0;
+        break;
+      }
+    }
+  }
+  return maxOutput;
 };
+console.log(maxSubArray([5,4,-1,7,8]));
