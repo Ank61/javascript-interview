@@ -467,7 +467,6 @@
 //   return true;
 // }
 
-
 // var isIsomorphic = function(s, t) {
 //     // Early exit if lengths differ.
 //     if (s.length !== t.length) return false;
@@ -502,9 +501,7 @@
 //   console.log(isIsomorphic("foo", "bar")); // false
 //   console.log(isIsomorphic("paper", "title")); // true
 
-
 // console.log(isomorphic("foo", "bar"));
-
 
 //----------------------------------------------------------------------------------
 // Input: num = "52"
@@ -620,30 +617,30 @@
 // Input: s = "rat", t = "car"
 // Output: false
 
-var isAnagram = function (s, t) {
-  if (s.length !== t.length) return false;
+// var isAnagram = function (s, t) {
+//   if (s.length !== t.length) return false;
 
-  const charCount = new Map();
-  for (let i = 0; i < s.length; i++) {
-    if (!charCount.has(s[i])) {
-      charCount.set(s[i], 1);
-    }
-    else {
-      const count = charCount.get(s[i]);
-      charCount.delete(s[i]);
-      charCount.set(s[i], count + 1);
-    }
-  }
-  for (let char of t) {
-    if (!charCount.has(char)) return false;
-    charCount.set(char, charCount.get(char) - 1);
-    if (charCount.get(char) < 0) return false;
-  }
+//   const charCount = new Map();
+//   for (let i = 0; i < s.length; i++) {
+//     if (!charCount.has(s[i])) {
+//       charCount.set(s[i], 1);
+//     }
+//     else {
+//       const count = charCount.get(s[i]);
+//       charCount.delete(s[i]);
+//       charCount.set(s[i], count + 1);
+//     }
+//   }
+//   for (let char of t) {
+//     if (!charCount.has(char)) return false;
+//     charCount.set(char, charCount.get(char) - 1);
+//     if (charCount.get(char) < 0) return false;
+//   }
 
-  return true;
-};
+//   return true;
+// };
 
-console.log(isAnagram("rat", "car"))
+// console.log(isAnagram("rat", "car"))
 // var isIsomorphic = function(s, t) {
 //     // Early exit if lengths differ.
 //     if (s.length !== t.length) return false;
@@ -741,4 +738,44 @@ console.log(isAnagram("rat", "car"))
 // };
 
 // console.log(maxDepth("(1)+((2))+(((3)))"));
+
 //---------------------------------------------------------------------------------
+
+// Input: s = "the sky is blue"
+// Output: "blue is sky the"
+
+// var reverseWords = function(s) {
+//   let output = "";
+//   let word = "";
+//   let prefixSpace = true;
+
+//   for (let i = 0; i < s.length; i++) {
+//     if (s[i] !== " ") {
+//       prefixSpace = false;
+//       word += s[i];
+//     } else {
+//       if (!prefixSpace) {
+//         output = (output ? " " : "") + word + output;
+//         word = "";
+//       }
+//     }
+//   }
+
+//   if (word) {
+//     output = (output ? " " : "") + word + output;
+//   }
+
+//   return output;
+// };
+
+// console.log(reverseWords("the sky is blue"));
+// console.log(reverseWords("  hello world  "));     
+// console.log(reverseWords("a good   example"));    
+// console.log(reverseWords(""));                    
+// console.log(reverseWords("singleword"));          
+
+//------------------------------------------------------------------------------
+
+var beautySum = function(s) {
+    
+};
