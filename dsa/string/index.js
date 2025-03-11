@@ -1004,22 +1004,22 @@
 // Output: 6
 // Explanation: The subarray [4,-1,2,1] has the largest sum 6.
 
-var maxSubArray = function (nums) {
-  let maxOutput = -Infinity;
-  let subSum = -Infinity;
-  for (let i = 0; i <= nums.length; i++) {
-    subSum = subSum + nums[i];
-    for (let j = i + 1; j <= nums.length; j++) {
-      subSum = subSum + nums[j];
-      if(subSum>maxOutput){
-        maxOutput = subSum;
-      }
-      else{
-        subSum = 0;
-        break;
-      }
-    }
-  }
-  return maxOutput;
-};
-console.log(maxSubArray([5,4,-1,7,8]));
+// var maxSubArray = function (nums) {
+//   let maxOutput = -Infinity;
+//   let subSum = -Infinity;
+//   for (let i = 0; i <= nums.length; i++) {
+//     subSum = subSum + nums[i];
+//     for (let j = i + 1; j <= nums.length; j++) {
+//       subSum = subSum + nums[j];
+//       if(subSum>maxOutput){
+//         maxOutput = subSum;
+//       }
+//       else{
+//         subSum = 0;
+//         break;
+//       }
+//     }
+//   }
+//   return maxOutput;
+// };
+// console.log(maxSubArray([5,4,-1,7,8]));

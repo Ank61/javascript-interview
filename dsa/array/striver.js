@@ -348,7 +348,7 @@
 
 // // var sortColors = function(nums) {
 // //   let low = 0, mid = 0, high = nums.length - 1;
-  
+
 // //   // Process elements until mid pointer passes high pointer.
 // //   while (mid <= high) {
 // //     if (nums[mid] === 0) {
@@ -410,29 +410,28 @@
 // Explanation: Subarrays with sum = 15 are [5, 2, 7, 1], [10, 5] and [10, 5, 2, 7, 1, -10]. 
 // The length of the longest subarray with a sum of 15 is 6.
 
-function longestSubarray(arr, k) {
-  const final = [];
-  let sum = 0;
-  const map = new Map();
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = i + 1; j < arr.length; j++) {
-      map.set(arr[i], i);
-      sum = sum + arr[i];
-      if (sum === k) {
-        console.log("sum", sum)
-        let temp = [];
-        for (const [key, value] in map) {
-          console.log(key)
-          temp.push(key);
-        }
-        final.push(temp);
-        sum = 0;
-      }
-    }
-    return final
-  }
-
-}
+// function longestSubarray(arr, k) {
+//   const final = [];
+//   let sum = 0;
+//   const map = new Map();
+//   for (let i = 0; i < arr.length; i++) {
+//     for (let j = i + 1; j < arr.length; j++) {
+//       map.set(arr[i], i);
+//       sum = sum + arr[i];
+//       if (sum === k) {
+//         console.log("sum", sum)
+//         let temp = [];
+//         for (const [key, value] in map) {
+//           console.log(key)
+//           temp.push(key);
+//         }
+//         final.push(temp);
+//         sum = 0;
+//       }
+//     }
+//     return final
+//   }
+// }
 // function longestSubarray(arr, k) {
 //   const final = [];
 //   for (let i = 0; i < arr.length; i++) {
@@ -455,4 +454,75 @@ function longestSubarray(arr, k) {
 
 // console.log(longestSubarray([10, 5, 2, 7, 1, -10], 15))
 
-//---------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
+
+// Input: prices = [7,1,5,3,6,4]
+// Output: 5
+// Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+// Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+
+// var maxProfit = function (prices) {
+//   let maxProfit = 0;
+//   for (let i = 0; i < prices.length; i++) {
+//     for (let j = i + 1; j < prices.length; j++) {
+//       if (prices[j] > prices[i]) {
+//         const profit = prices[j] - prices[i];
+//         if (profit > maxProfit) {
+//           maxProfit = profit;
+//         }
+//       }
+//     }
+//   }
+//   return maxProfit;
+// };
+//Optimized
+// var maxProfit = function(prices) {
+//   let minPrice = Infinity;  // Set to a very high value
+//   let maxProfit = 0;
+
+//   for (let i = 0; i < prices.length; i++) {
+//     if (prices[i] < minPrice) {
+//       minPrice = prices[i]; // Update minimum price
+//     } else {
+//       maxProfit = Math.max(maxProfit, prices[i] - minPrice); // Calculate max profit
+//     }
+//   }
+
+//   return maxProfit;
+// };
+
+// console.log(maxProfit([7,6,4,3,1]))
+
+//----------------------------------------------------------------------------------------------------
+
+// You are given a 0-indexed integer array nums of even length consisting of an equal number of positive and negative integers.
+// You should return the array of nums such that the the array follows the given conditions:
+// Every consecutive pair of integers have opposite signs.
+// For all integers with the same sign, the order in which they were present in nums is preserved.
+// The rearranged array begins with a positive integer.
+
+// Input: nums = [3,1,-2,-5,2,-4]
+// Output: [3,-2,1,-5,2,-4]
+
+// var rearrangeArray = function(nums) {
+//   const positive = [];
+//   const negative = [];
+  
+//   for (let num of nums) {
+//       if (num > 0) {
+//           positive.push(num);
+//       } else {
+//           negative.push(num);
+//       }
+//   }
+
+//   const result = [];
+//   for (let i = 0; i < positive.length; i++) {
+//       result.push(positive[i]); 
+//       result.push(negative[i]); 
+//   }
+
+//   return result;
+// };
+
+// console.log(rearrangeArray([3,1,-2,-5,2,-4]));
