@@ -433,5 +433,26 @@ function longestSubarray(arr, k) {
   }
 
 }
+// function longestSubarray(arr, k) {
+//   const final = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     const output = [];
+//     let sum = 0;
+//     const map = new Map()
+//     for (let j = i + 1; j < arr.length; j++) {
+//       sum += arr[j];
+//       if (sum === k) {
+//         output.push()
+//         if (final.length < output.length) {
+//           final = [...output];
+//           output = [];
+//         }
+//       }
+//     }
+//   }
+//   return final
+// }
 
-console.log(longestSubarray([10, 5, 2, 7, 1, -10], 15))
+// console.log(longestSubarray([10, 5, 2, 7, 1, -10], 15))
+
+//---------------------------------------------------------------------------------
