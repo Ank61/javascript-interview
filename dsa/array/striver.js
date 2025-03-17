@@ -348,7 +348,7 @@
 
 // // var sortColors = function(nums) {
 // //   let low = 0, mid = 0, high = nums.length - 1;
-  
+
 // //   // Process elements until mid pointer passes high pointer.
 // //   while (mid <= high) {
 // //     if (nums[mid] === 0) {
@@ -407,32 +407,32 @@
 //----------------------------------------------------------------------------------------------
 // Input: arr[] = [10, 5, 2, 7, 1, -10], k = 15
 // Output: 6
-// Explanation: Subarrays with sum = 15 are [5, 2, 7, 1], [10, 5] and [10, 5, 2, 7, 1, -10]. 
+// Explanation: Subarrays with sum = 15 are [5, 2, 7, 1], [10, 5] and [10, 5, 2, 7, 1, -10].
 // The length of the longest subarray with a sum of 15 is 6.
 
-function longestSubarray(arr, k) {
-  const final = [];
-  let sum = 0;
-  const map = new Map();
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = i + 1; j < arr.length; j++) {
-      map.set(arr[i], i);
-      sum = sum + arr[i];
-      if (sum === k) {
-        console.log("sum", sum)
-        let temp = [];
-        for (const [key, value] in map) {
-          console.log(key)
-          temp.push(key);
-        }
-        final.push(temp);
-        sum = 0;
-      }
-    }
-    return final
-  }
+// function longestSubarray(arr, k) {
+//   const final = [];
+//   let sum = 0;
+//   const map = new Map();
+//   for (let i = 0; i < arr.length; i++) {
+//     for (let j = i + 1; j < arr.length; j++) {
+//       map.set(arr[i], i);
+//       sum = sum + arr[i];
+//       if (sum === k) {
+//         console.log("sum", sum)
+//         let temp = [];
+//         for (const [key, value] in map) {
+//           console.log(key)
+//           temp.push(key);
+//         }
+//         final.push(temp);
+//         sum = 0;
+//       }
+//     }
+//     return final
+//   }
 
-}
+// }
 // function longestSubarray(arr, k) {
 //   const final = [];
 //   for (let i = 0; i < arr.length; i++) {
@@ -456,3 +456,112 @@ function longestSubarray(arr, k) {
 // console.log(longestSubarray([10, 5, 2, 7, 1, -10], 15))
 
 //---------------------------------------------------------------------------------
+
+// class Solution {
+//   leaders(a) {
+//     const output = [];
+//     for (let i = 0; i < a.length; i++) {
+//       for (let j = i + 1; j < a.length; j++) {
+//         if (a[i] < a[j] || a[i] < a[a.length-1]) {
+//           break;
+//         }
+//         if(j===a.length-1 && a[i] > a[a.length-1]){
+//           output.push(a[i]);
+//         }
+//       }
+//     }
+//     if (!output.includes(a[a.length - 1])) {
+//       output.push(a[a.length - 1]);
+//     }
+//     return output;
+//   }
+// }
+
+// const arr = new Solution();
+// console.log(arr.leaders([53, 32, 9, 55, 64, 59, 65, 90]));
+
+// class Solution {
+//   leaders(a) {
+//     const output = [];
+//     let maxRight = -Infinity; // Start with a very small value
+
+//     // Traverse from right to left
+//     for (let i = a.length - 1; i >= 0; i--) {
+//       if (a[i] >= maxRight) {
+//         output.push(a[i]);
+//         maxRight = a[i]; // Update maxRight
+//       }
+//     }
+
+//     return output.reverse(); // Reverse to maintain original order
+//   }
+// }
+//------------------------------------------------------------------------------------
+//Given an unsorted array of integers nums,
+//return the length of the longest consecutive elements sequence.
+
+// Input: nums = [100,4,200,1,3,2]
+// Output: 4
+// Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
+
+// var longestConsecutive = function (nums) {
+//   const min = Math.min(...nums)
+//   let count = min;
+//   const arr = [];
+//   const newArr = nums.sort((a,b)=>a-b);
+//   console.log(newArr);
+//   for (let i = 0; i < nums.length; i++) {
+//     if(newArr.includes(count)){
+//       arr.push(newArr[i]);
+//       count++
+//     }
+//   }
+//   return arr.length
+// };
+
+// console.log(longestConsecutive([100, 4, 200, 1, 3, 2]));
+
+var longestConsecutive = function(nums) {
+  if (nums.length === 0) return 0;
+
+  const numSet = new Set(nums); // Convert to a set for O(1) lookups
+  let longestStreak = 0;
+
+  for (let num of numSet) {
+    // Start a new sequence only if `num - 1` is not in the set
+    if (!numSet.has(num - 1)) {
+      let currentNum = num;
+      let currentStreak = 1;
+
+      while (numSet.has(currentNum + 1)) {
+        currentNum++;
+        currentStreak++;
+      }
+
+      longestStreak = Math.max(longestStreak, currentStreak);
+    }
+  }
+
+  return longestStreak;
+};
+
+// ✅ Test Cases
+console.log(longestConsecutive([100, 4, 200, 1, 3, 2]));  // Output: 4
+console.log(longestConsecutive([0,3,7,2,5,8,4,6,0,1]));  // Output: 9
+console.log(longestConsecutive([9,1,4,7,3,-1,0,5,8,-1,6])); // Output: 7
+console.log(longestConsecutive([]));  // Output: 0
+
+// Step 1: Convert to Set → {100, 4, 200, 1, 3, 2}
+
+// Step 2: Check for sequence starters:
+// - 100 → No previous → Start sequence → [100] (length 1)
+// - 4 → Has previous (3) → Skip
+// - 200 → No previous → Start sequence → [200] (length 1)
+// - 1 → No previous → Start sequence → [1, 2, 3, 4] (length 4) ✅ 
+// Simply count the lenght 
+// - 3 → Has previous (2) → Skip
+// - 2 → Has previous (1) → Skip
+
+// Step 3: Find the longest sequence → [1, 2, 3, 4] (Length = 4)
+
+// Final Output: 4

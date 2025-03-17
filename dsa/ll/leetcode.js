@@ -5,68 +5,67 @@
 
 //1. --> SWAP EVERY ALTERNATIVE NODE
 
-var swapPairs = function (head) {
-    if (head === null || head.next === null) return head;
-    let dummy = new ListNode(0);
-    dummy.next = head;
-    let current = dummy;
-    console.log("Before")
-    printLinkedList(current)
-    while (current.next !== null && current.next.next !== null) {
-        let first = current.next;
-        let second = current.next.next;
-        console.log("first", first);
-        console.log("second", second);
+// var swapPairs = function (head) {
+//     if (head === null || head.next === null) return head;
+//     let dummy = new ListNode(0);
+//     dummy.next = head;
+//     let current = dummy;
+//     console.log("Before")
+//     printLinkedList(current)
+//     while (current.next !== null && current.next.next !== null) {
+//         let first = current.next;
+//         let second = current.next.next;
+//         console.log("first", first);
+//         console.log("second", second);
 
-        first.next = second.next;
-        second.next = first;
-        current.next = second;
+//         first.next = second.next;
+//         second.next = first;
+//         current.next = second;
 
-        current = first;
-        console.log("After swappingd first", first);
-        console.log("After swappingd second", second);
-    }
-    console.log("After")
-    printLinkedList(dummy.next)
-    console.log(dummy === current)
-    return current.next;
-};
+//         current = first;
+//         console.log("After swappingd first", first);
+//         console.log("After swappingd second", second);
+//     }
+//     console.log("After")
+//     printLinkedList(dummy.next)
+//     console.log(dummy === current)
+//     return current.next;
+// };
 
-var swapPairs = function (head) {
-    if (head === null || head.next === null) {
-        return head
-    }
-    let temp = head.next
-    let ans = swapPairs(head.next.next)
-    head.next = ans
-    temp.next = head
-    return temp
-};
+// var swapPairs = function (head) {
+//     if (head === null || head.next === null) {
+//         return head
+//     }
+//     let temp = head.next
+//     let ans = swapPairs(head.next.next)
+//     head.next = ans
+//     temp.next = head
+//     return temp
+// };
 
-function createLinkedList(arr) {
-    let dummy = new ListNode();
-    let current = dummy;
-    for (let val of arr) {
-        current.next = new ListNode(val);
-        current = current.next;
-    }
-    return dummy.next;
-}
+// function createLinkedList(arr) {
+//     let dummy = new ListNode();
+//     let current = dummy;
+//     for (let val of arr) {
+//         current.next = new ListNode(val);
+//         current = current.next;
+//     }
+//     return dummy.next;
+// }
 
-function printLinkedList(head) {
-    let arr = [];
-    while (head !== null) {
-        arr.push(head.val);
-        head = head.next;
-    }
-    console.log(arr);
-}
+// function printLinkedList(head) {
+//     let arr = [];
+//     while (head !== null) {
+//         arr.push(head.val);
+//         head = head.next;
+//     }
+//     console.log(arr);
+// }
 
-let head = createLinkedList([1, 2, 3, 4]);
-let swappedHead = swapPairs(head);
-console.log(swappedHead)
-printLinkedList(swappedHead);
-
+// let head = createLinkedList([1, 2, 3, 4]);
+// let swappedHead = swapPairs(head);
+// console.log(swappedHead)
+// printLinkedList(swappedHead);
 
 //2. --> MERGE SORTED LISTS
 //      Input : list1 = [1,2,4], list2 = [1,3,4]
@@ -113,7 +112,6 @@ printLinkedList(swappedHead);
 // const merged = mergeList(list1, list2);
 // console.log(merged)
 
-
 // var mergeTwoLists = function(list1, list2) {
 //     if (!list1) {
 //      return list2;
@@ -131,5 +129,67 @@ printLinkedList(swappedHead);
 //  }
 // };
 
+//-----------------------------------------------------------------------------------
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
 
-// 3. MERGE K SORTED LIST
+// var deleteNode = function(node) {
+//     node.val = node.next.val;
+//     node.next = node.next.next;
+// };
+
+// console.log(deleteNode())
+
+//------------------------------------------------------------------------------------
+
+// class Node{
+//     constructor(data){
+//         this.data = data;
+//         this.next = null;
+//     }
+// }
+
+// class Solution {
+//     getCount(head) {
+//         let node = head;
+//         let length = 0;
+//         while(node.next){
+//             node = node.next;
+//             length++;
+//         }
+//         return length;
+//     }
+// }
+// const ll = new Solution();
+// console.log(getCount());
+
+//-------------------------------------------------------------------------------------
+//Given a linked list of n nodes and a key, the task is to check if the key is
+//  present in the linked list or not.
+
+// class Solution {
+//   /**
+//    * @param {number} n
+//    * @param {Node} head
+//    * @param {number} key
+//    * @returns {boolean}
+//    */
+//   searchKey(n, head, key) {
+//     let node = head;
+//     while (node.next) {
+//         if(node.data === key){
+//             return true;
+//         }
+//         node = node.next;
+//     }
+//     if(node.data===key){
+//         return true
+//     }
+//     return false;
+//   }
+// }
