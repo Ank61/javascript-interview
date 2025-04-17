@@ -113,13 +113,12 @@
 //     return nums.length - count
 // };
 
-
 // var removeDuplicates = function (nums) {
 //     let k = 0;
 
 //     for (let i = 0; i < nums.length; i++) {
 //         if (i === 0 || nums[i] !== nums[i - 1]) {
-//             nums[k] = nums[i]; 
+//             nums[k] = nums[i];
 //             k++;
 //         }
 //     }
@@ -137,10 +136,9 @@
 // Input: nums = [1,2,3,4,5,6,7], k = 3
 // Output: [5,6,7,1,2,3,4]
 
-
 // var rotate = function(nums, k) {
 //     let n = nums.length;
-//     k = k % n; 
+//     k = k % n;
 
 //     function reverse(start, end) {
 //         while (start < end) {
@@ -150,8 +148,8 @@
 //     }
 
 //     reverse(0, n - 1);
-//     reverse(0, k - 1); 
-//     reverse(k, n - 1); 
+//     reverse(0, k - 1);
+//     reverse(k, n - 1);
 
 //     return nums;
 // };
@@ -199,5 +197,92 @@
 // }
 // console.log(moveZeroes([1,0]))
 
-
 //---------------------------------------------------------------------------------------------
+// Three Sum problem
+// Input: nums = [-1,0,1,2,-1,-4]
+// Output: [[-1,-1,2],[-1,0,1]]
+
+// var threeSum = function (nums) {
+//   const output = new Set();
+//   for (let i = 0; i < nums.length; i++) {
+//     for (let j = i + 1; j < nums.length; j++) {
+//       for (let k = j + 1; k < nums.length; k++) {
+//         const sum = nums[i] + nums[j] + nums[k];
+//         if (sum === 0) {
+//           const triplet = [nums[i], nums[j], nums[k]].sort((a, b) => a - b);
+//           output.add(triplet.toString());
+//         }
+//       }
+//     }
+//   }
+//   return Array.from(output).map((item) => item.split(",").map(Number));
+// };
+
+// var threeSum = function (nums) {
+//   const result = [];
+//   nums.sort((a, b) => a - b); // Sort the array
+
+//   for (let i = 0; i < nums.length - 2; i++) {
+//     // Skip duplicates for the first number
+//     if (i > 0 && nums[i] === nums[i - 1]) continue;
+
+//     let left = i + 1;
+//     let right = nums.length - 1;
+
+//     while (left < right) {
+//       const sum = nums[i] + nums[left] + nums[right];
+
+//       if (sum === 0) {
+//         result.push([nums[i], nums[left], nums[right]]);
+
+//         // Skip duplicates for the second and third numbers
+//         while (left < right && nums[left] === nums[left + 1]) left++;
+//         while (left < right && nums[right] === nums[right - 1]) right--;
+
+//         left++;
+//         right--;
+//       } else if (sum < 0) {
+//         left++; // Need a bigger sum
+//       } else {
+//         right--; // Need a smaller sum
+//       }
+//     }
+//   }
+
+//   return result;
+// };
+
+// console.log(threeSum([-1, 0, 1, 2, -1, -4]));
+
+//---------------------------------------------------------------------------------------------------
+// Example 1:
+// Input Format: N = 6, array[] = {9, -3, 3, -1, 6, -5}
+// Result: 5
+// Explanation: The following subarrays sum to zero:
+// {-3, 3} , {-1, 6, -5}, {-3, 3, -1, 6, -5}
+// Since we require the length of the longest subarray, our answer is 5!
+
+// function longSub(arr) {
+//   let maxLength = 0;
+//   let sum = 0;
+//   const sumMap = new Map();
+
+//   for (let i = 0; i < arr.length; i++) {
+//     sum += arr[i];
+
+//     if (sum === 0) {
+//       maxLength = i + 1; // whole subarray from 0 to i
+//     }
+
+//     if (sumMap.has(sum)) {
+//       const prevIndex = sumMap.get(sum);
+//       maxLength = Math.max(maxLength, i - prevIndex);
+//     } else {
+//       sumMap.set(sum, i); // store first occurrence
+//     }
+//   }
+
+//   return maxLength;
+// }
+
+// console.log(longSub([9, -3, 3, -1, 6, -5]));
