@@ -1,24 +1,24 @@
 //------> 1. Using constructor
-// class Singleton {
-//     constructor() {
-//         if (Singleton.instance) {
-//             console.log("Instance called")
-//             return Singleton.instance;
-//         };
-//         Singleton.instance = this;
-//         this.data = 'Single Intstance'
-//     }
-//     getData() {
-//         return this.data;
-//     }
-//     setData(data){
-//         this.data = data;
-//         return {
-//             message : 'New Data is set',
-//             data : this.data,
-//         }
-//     }
-// }
+class Singleton {
+    constructor() {
+        if (Singleton.instance) {
+            console.log("Instance called")
+            return Singleton.instance;
+        };
+        Singleton.instance = this;
+        this.data = 'Single Intstance'
+    }
+    getData() {
+        return this.data;
+    }
+    setData(data){
+        this.data = data;
+        return {
+            message : 'New Data is set',
+            data : this.data,
+        }
+    }
+}
 
 // //Called First time
 // const singletonInstance   = new Singleton();

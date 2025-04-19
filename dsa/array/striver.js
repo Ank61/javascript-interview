@@ -521,35 +521,35 @@
 
 // console.log(longestConsecutive([100, 4, 200, 1, 3, 2]));
 
-var longestConsecutive = function(nums) {
-  if (nums.length === 0) return 0;
+// var longestConsecutive = function(nums) {
+//   if (nums.length === 0) return 0;
 
-  const numSet = new Set(nums); // Convert to a set for O(1) lookups
-  let longestStreak = 0;
+//   const numSet = new Set(nums); // Convert to a set for O(1) lookups
+//   let longestStreak = 0;
 
-  for (let num of numSet) {
-    // Start a new sequence only if `num - 1` is not in the set
-    if (!numSet.has(num - 1)) {
-      let currentNum = num;
-      let currentStreak = 1;
+//   for (let num of numSet) {
+//     // Start a new sequence only if `num - 1` is not in the set
+//     if (!numSet.has(num - 1)) {
+//       let currentNum = num;
+//       let currentStreak = 1;
 
-      while (numSet.has(currentNum + 1)) {
-        currentNum++;
-        currentStreak++;
-      }
+//       while (numSet.has(currentNum + 1)) {
+//         currentNum++;
+//         currentStreak++;
+//       }
 
-      longestStreak = Math.max(longestStreak, currentStreak);
-    }
-  }
+//       longestStreak = Math.max(longestStreak, currentStreak);
+//     }
+//   }
 
-  return longestStreak;
-};
+//   return longestStreak;
+// };
 
 // ✅ Test Cases
-console.log(longestConsecutive([100, 4, 200, 1, 3, 2]));  // Output: 4
-console.log(longestConsecutive([0,3,7,2,5,8,4,6,0,1]));  // Output: 9
-console.log(longestConsecutive([9,1,4,7,3,-1,0,5,8,-1,6])); // Output: 7
-console.log(longestConsecutive([]));  // Output: 0
+// console.log(longestConsecutive([100, 4, 200, 1, 3, 2]));  // Output: 4
+// console.log(longestConsecutive([0,3,7,2,5,8,4,6,0,1]));  // Output: 9
+// console.log(longestConsecutive([9,1,4,7,3,-1,0,5,8,-1,6])); // Output: 7
+// console.log(longestConsecutive([]));  // Output: 0
 
 // Step 1: Convert to Set → {100, 4, 200, 1, 3, 2}
 
@@ -565,3 +565,44 @@ console.log(longestConsecutive([]));  // Output: 0
 // Step 3: Find the longest sequence → [1, 2, 3, 4] (Length = 4)
 
 // Final Output: 4
+
+//-------------------------------------------------------------------------------------
+
+// You are given an n x n 2D matrix representing an image, 
+// rotate the image by 90 degrees (clockwise).
+
+// Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+// Output: [[7,4,1],[8,5,2],[9,6,3]]
+
+// var rotate = function(matrix) {
+// const innerLength = matrix[0].length;
+// let innerSelected =0;
+// const output = [];
+// while(innerSelected<innerLength){
+//     const newArr = [];
+//     for(let i=matrix.length-1; i>=0; i--){
+//         const num = matrix[i][innerSelected];
+//         newArr.push(num);
+//     }
+//     output.push(newArr);    
+//     innerSelected++;
+// }
+// return output
+// };
+
+var rotate = function(matrix) {
+    const n = matrix.length;
+    
+
+    for (let i = 0; i < n; i++) {
+        for (let j = i + 1; j < n; j++) {
+            [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
+        }
+    }
+
+    for (let i = 0; i < n; i++) {
+        matrix[i].reverse();
+    }
+};
+
+console.log(rotate([[1,2,3],[4,5,6],[7,8,9]]))

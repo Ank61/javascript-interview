@@ -229,18 +229,39 @@
 // };
 
 
-var longestCommonPrefix = function (strs) {
-    if (!strs || strs.length === 0) return "";
-    if (strs.length === 1) return strs[0];
-    let prefix = strs[0];
-    for (let i = 1; i < strs.length; i++) {
-        console.log("strs[i].indexOf(prefix)", strs[i].indexOf(prefix), strs[i], prefix)
-        while (strs[i].indexOf(prefix) !== 0) {
-            prefix = prefix.substring(0, prefix.length - 1);
-            if (prefix === "") return "";
-        }
-    }
-    return prefix;
-};
-console.log(longestCommonPrefix(["dog", "don"]))
+// var longestCommonPrefix = function (strs) {
+//     if (!strs || strs.length === 0) return "";
+//     if (strs.length === 1) return strs[0];
+//     let prefix = strs[0];
+//     for (let i = 1; i < strs.length; i++) {
+//         console.log("strs[i].indexOf(prefix)", strs[i].indexOf(prefix), strs[i], prefix)
+//         while (strs[i].indexOf(prefix) !== 0) {
+//             prefix = prefix.substring(0, prefix.length - 1);
+//             if (prefix === "") return "";
+//         }
+//     }
+//     return prefix;
+// };
+// console.log(longestCommonPrefix(["dog", "don"]))
 //-------------------------------------------------------------------------------------------------------
+
+// function flattenArray(arr) {
+//     let result = [];
+    
+//     function helper(subArr) {
+//         for (let item of subArr) {
+//             if (Array.isArray(item)) {
+//                 helper(item);
+//             } else {
+//                 result.push(item);
+//             }
+//         }
+//     }
+    
+//     helper(arr);
+//     return result;
+// }
+
+// const nestedArray = [1, [2, [3, 4], 5], [6, 7], 8];
+// console.log(flattenArray(nestedArray)); 
+//--------------------------------------------------------------------------
