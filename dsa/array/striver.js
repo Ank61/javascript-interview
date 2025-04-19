@@ -119,6 +119,7 @@
 //     for (let i = 0; i < nums.length; i++) {
 //         if (i === 0 || nums[i] !== nums[i - 1]) {
 //             nums[k] = nums[i];
+//             nums[k] = nums[i];
 //             k++;
 //         }
 //     }
@@ -139,6 +140,7 @@
 // var rotate = function(nums, k) {
 //     let n = nums.length;
 //     k = k % n;
+//     k = k % n;
 
 //     function reverse(start, end) {
 //         while (start < end) {
@@ -148,6 +150,8 @@
 //     }
 
 //     reverse(0, n - 1);
+//     reverse(0, k - 1);
+//     reverse(k, n - 1);
 //     reverse(0, k - 1);
 //     reverse(k, n - 1);
 
