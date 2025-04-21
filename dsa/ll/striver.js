@@ -36,20 +36,24 @@ class Node {
 //Given the head of a Singly Linked List and a value x, insert that value x at the end of the LinkedList 
 //and return the modified Linked List.
 
-class Solution {
-    insertAtEnd(head, x) {
-        let node = head;
-        let previousNode = null;
-        while (node.next) {
-            previousNode = node;
-            if(node.next){
-                node = node.next;
-            }
-            else{
-                const newNode = new Node(x);
-                node.next = newNode;
-            }
-        }
-        return node;
-    }
-}
+// class Solution {
+//     insertAtEnd(head, x) {
+//         let node = head;
+//         let previousNode = null;
+//         while (node.next) {
+//             previousNode = node;
+//             if(node.next){
+//                 node = node.next;
+//             }
+//             else{
+//                 const newNode = new Node(x);
+//                 node.next = newNode;
+//             }
+//         }
+//         return node;
+//     }
+// }
+
+
+// How to detect a Cycle ? Slowpointer and fast pointer will meet at the same node
+// How to find the index of the cycle start : use slowpointer and within the while loop use another loop to find the index
