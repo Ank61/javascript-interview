@@ -20,3 +20,11 @@ Array Patterns:
     Questions:
     1. Given a string s, find the length of the longest substring without duplicate characters.
     
+    Learning:
+    - Loop though only arr.length - k (so that it does not go out of bound)
+    - Sliding window is used with SET or MAP
+    - How to recognise ?
+        -> On each loop if your doing any operation use sliding window pattern
+        --> This approach runs in O(n) instead of O(n × k).
+    - To actually do this dont calculate sum on each loop. Just subtract intial index elemtn and remove that elemnt.
+    - 
