@@ -314,35 +314,35 @@
 // Output: true
 // Explanation: s2 contains one permutation of s1 ("ba")
 
-var checkInclusion = function (s1, s2) {
-  const text = new Map();
+// var checkInclusion = function (s1, s2) {
+//   const text = new Map();
 
-  for (let i = 0; i < s1.length; i++) {
-    text.set(s1[i], (text.get(s1[i]) || 0) + 1);
-  }
+//   for (let i = 0; i < s1.length; i++) {
+//     text.set(s1[i], (text.get(s1[i]) || 0) + 1);
+//   }
 
-  for (let i = 0; i <= s2.length - s1.length; i++) {
-    const arrang = new Map(text);
-    let match = true;
+//   for (let i = 0; i <= s2.length - s1.length; i++) {
+//     const arrang = new Map(text);
+//     let match = true;
 
-    for (let j = i; j < i + s1.length; j++) {
-      if (arrang.has(s2[j])) {
-        let count = arrang.get(s2[j]) - 1;
-        if (count === 0) {
-          arrang.delete(s2[j]);
-        } else {
-          arrang.set(s2[j], count);
-        }
-      } else {
-        match = false;
-        break;
-      }
-    }
+//     for (let j = i; j < i + s1.length; j++) {
+//       if (arrang.has(s2[j])) {
+//         let count = arrang.get(s2[j]) - 1;
+//         if (count === 0) {
+//           arrang.delete(s2[j]);
+//         } else {
+//           arrang.set(s2[j], count);
+//         }
+//       } else {
+//         match = false;
+//         break;
+//       }
+//     }
 
-    if (match && arrang.size === 0) return true;
-  }
+//     if (match && arrang.size === 0) return true;
+//   }
 
-  return false;
-};
+//   return false;
+// };
 
-console.log(checkInclusion("ab", "eidbaooo")); // true
+// console.log(checkInclusion("ab", "eidbaooo")); // true
