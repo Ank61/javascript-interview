@@ -346,3 +346,128 @@
 // };
 
 // console.log(checkInclusion("ab", "eidbaooo")); // true
+
+//----------------------------------------------------------------------------------------
+// Longest Repeating Character Replacement
+// You are given a string s and an integer k. You can choose any character of
+// the string and change it to any other uppercase English character. You can perform this operation at most k times.
+// Return the length of the longest substring containing the same letter you can get after
+// performing the above operations.
+
+// Input: s = "ABAB", k = 2
+// Output: 4
+// Explanation: Replace the two 'A's with two 'B's or vice versa.
+
+// Input: s = "AABABBA", k = 1
+// Output: 4
+// Explanation: Replace the one 'A' in the middle with 'B' and form "AABBBBA".
+// The substring "BBBB" has the longest repeating letters, which is 4.
+// There may exists other ways to achieve this answer too.
+
+// var characterReplacement = function (s, k) {
+//   let maxCount = 0;
+//   let left = 0;
+//   const freqMap = new Map();
+
+//   for (let right = 0; right < s.length; right++) {
+//     const char = s[right];
+//     freqMap.set(char, (freqMap.get(char) || 0) + 1);
+
+//     maxCount = Math.max(maxCount, freqMap.get(char));
+//     if (right - left + 1 - maxCount > k) {
+//       const leftChar = s[left];
+//       freqMap.set(leftChar, freqMap.get(leftChar) - 1);
+//       left++;
+//     }
+//   }
+//   return s.length - left;
+// };
+
+// console.log(characterReplacement("AABABBA", 1));
+
+//----------------------------------------------------------------------------------------
+
+// Count Number of Nice Subarrays
+// Given an array of integers nums and an integer k. A continuous subarray is called nice
+// if there are k odd numbers on it.
+// Return the number of nice sub-arrays.
+
+//Input: nums = [1,1,2,1,1], k = 3
+// Output: 2
+// Explanation: The only sub-arrays with 3 odd numbers are [1,1,2,1] and [1,2,1,1].
+
+// var numberOfSubarrays = function (nums, k) {
+//     let count = 0;
+//     let prefix = new Map();
+//     prefix.set(0, 1); // Base case: 0 odd numbers seen at the start
+//     let oddCount = 0;
+
+//     for (let i = 0; i < nums.length; i++) {
+//       if (nums[i] % 2 !== 0) {
+//         oddCount++;
+//       }
+
+//       // If (oddCount - k) has occurred before, we can form a subarray
+//       if (prefix.has(oddCount - k)) {
+//         count += prefix.get(oddCount - k);
+//       }
+
+//       prefix.set(oddCount, (prefix.get(oddCount) || 0) + 1);
+//     }
+
+//     return count;
+//   };
+
+// console.log(numberOfSubarrays([1, 1, 2, 1, 1], 3));
+
+//-------------------------------------------------------------------------------------------------------------------
+//Number of Substrings Containing All Three Characters
+// Input: s = "abcabc"
+// Output: 10
+// Explanation: The substrings containing at least one occurrence of the characters a, b and c are "abc", "abca", "abcab", "abcabc", "bca", "bcab", "bcabc", "cab", "cabc" and "abc" (again).
+
+//BRUTE FORCE
+// var numberOfSubstrings = function (s) {
+//   let output = [];
+//   for (let i = 0; i < s.length; i++) {
+//     for (let j = i + 3; j <= s.length; j++) {
+//       const check = checkOnce(s.slice(i, j));
+//       if (check) {
+//         output.push(s.slice(i, j));
+//       }
+//     }
+//   }
+//   return output.length;
+// };
+
+// function checkOnce(string) {
+//   const map = new Map([
+//     ["a", 1],
+//     ["b", 1],
+//     ["c", 1],
+//   ]);
+
+//   for (let char of string) {
+//     if (map.has(char)) {
+//       map.delete(char);
+//     }
+//   }
+
+//   return map.size === 0;
+// }
+// console.log(numberOfSubstrings("abcabc"));
+
+//OPTMIZATIONS
+
+var numberOfSubstrings = function (s) {
+  let output = [];
+  let left = 0;
+  const freq = {
+    a: 0,
+    b: 0,
+    c: 0,
+  };
+
+  for (let right = 3; right <= s.length; right++) {}
+};
+console.log(numberOfSubstrings("abcabc"));

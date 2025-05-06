@@ -27,4 +27,8 @@ Array Patterns:
         -> On each loop if your doing any operation use sliding window pattern
         --> This approach runs in O(n) instead of O(n × k).
     - To actually do this dont calculate sum on each loop. Just subtract intial index elemtn and remove that elemnt.
-    - 
+
+
+2. Array Matrix:
+        - Rotate by 90 :
+            - Transpose matrix && reverse each array
