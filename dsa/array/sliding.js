@@ -459,15 +459,193 @@
 
 //OPTMIZATIONS
 
-var numberOfSubstrings = function (s) {
-  let output = [];
-  let left = 0;
-  const freq = {
-    a: 0,
-    b: 0,
-    c: 0,
-  };
+// var numberOfSubstrings = function (s) {
+//   let left = 0,
+//     count = 0;
+//   let check = 0;
+//   const freq = { a: 0, b: 0, c: 0 };
+//   for (let right = 0; right < s.length; right++) {
+//     freq[s[right]]++;
+//     // While window has all three characters
+//     while (freq["a"] > 0 && freq["b"] > 0 && freq["c"] > 0) {
+//       // For every valid window, there are (s.length - right) substrings
+//       count += s.length - right;
+//       console.log("Hit", freq);
+//       check += right - left + 1;
+//       freq[s[left]]--;
+//       left++;
+//     }
+//   }
+//   console.log("Check", check);
+//   return count;
+// };
 
-  for (let right = 3; right <= s.length; right++) {}
+// console.log(numberOfSubstrings("aaacb"));
+
+//--------------------------------------------------------------------------------
+// PRACTICE SLIDING WINDOW
+// Maximum Sum Subarray of Size K
+// function maxSubarraySum(arr, k) {
+//   let left = 0;
+//   let maxCurrent = 0;
+//   let currentSum = 0;
+//   let windowSize = k;
+//   let right = 0;
+//   while (right < arr.length) {
+//     if (right - left + 1 <= windowSize) {
+//       currentSum += arr[right];
+//     } else if (right - left + 1 > windowSize) {
+//       currentSum -= arr[left];
+//       currentSum += arr[right];
+//       maxCurrent = Math.max(maxCurrent, currentSum);
+//       left++;
+//     }
+//     right++;
+//   }
+//   return maxCurrent;
+// }
+
+// const numbers = [1, 4, 2, 10, 2, 3, 1, 0, 20];
+// const windowSize = 3;
+// const max = maxSubarraySum(numbers, windowSize);
+// console.log(`Maximum sum of a subarray of size ${windowSize}:`, max);
+
+//--------------------------------------------------------------------------------
+//Minimum Size Subarray Sum
+//Problem: Given an array of positive integers and a target sum s, find the minimal length of a contiguous subarray whose sum is greater than or equal to s. If there isn't one, return 0.
+// Input Array: [2, 3, 1, 2, 4, 3]
+// Target Sum (s): 7
+// Expected Output: 2 (The subarray [4, 3] has the minimal length of 2 and a sum of 7)
+
+// function miniSubSum(arr, k) {
+//   let left = 0;
+//   let right = 0;
+//   let currentSum = 0;
+//   let minLength = Infinity;
+
+//   while (right < arr.length) {
+//     currentSum += arr[right];
+
+//     // Shrink the window as long as the currentSum is greater than or equal to k
+//     while (currentSum >= k) {
+//       minLength = Math.min(minLength, right - left + 1);
+//       currentSum -= arr[left];
+//       left++;
+//     }
+//     right++;
+//   }
+
+//   return minLength === Infinity ? 0 : minLength;
+// }
+
+// console.log(miniSubSum([2, 3, 1, 2, 4, 3], 7));
+
+//--------------------------------------------------------------------------------
+// Longest Substring Without Repeating Characters
+// Given a string, find the length of the longest substring without repeating characters
+//Input String: "abcabcbb"
+// Expected Output: 3 (The longest substrings without repeating characters are "abc", "bca", "cab")
+
+// function longestSub(str) {
+//   let left = 0;
+//   let right = 0;
+//   const outcome = new Set();
+//   const map = new Map();
+//   while (right < str.length) {
+//     const currentCount = map.get(str[right]) || 0;
+//     map.set(str[right], currentCount + 1);
+//     console.log("map", map, str[right]);
+//     const cu = map.get(str[right]) || 0;
+//     if (cu > 1) {
+//       // outcome.push(uniqueStr);
+//       map.set(str[right], map.get(str[right]) - 1);
+//       outcome.add(uniqueStr);
+//       left++;
+//     }
+//     right++;
+//   }
+//   console.log(outcome);
+//   return outcome.size;
+// }
+// console.log(longestSub("abcabcbb"));
+
+// function longestSub(str) {
+//   let left = 0;
+//   let right = 0;
+//   const outcome = new Set();
+//   const map = new Map();
+//   let maxLength = 0;
+
+//   while (right < str.length) {
+//     const currentChar = str[right];
+//     const currentCount = map.get(currentChar) || 0;
+//     map.set(currentChar, currentCount + 1);
+//     if (map.get(currentChar) > 1) {
+//       map.set(str[left], map.get(str[left]) - 1);
+//       left++;
+//     }
+
+//     const uniqueStr = str.slice(left, right + 1);
+//     console.log("unique str", uniqueStr);
+//     outcome.add(uniqueStr);
+//     maxLength = Math.max(maxLength, right - left + 1);
+//     right++;
+//   }
+
+//   console.log("Unique substrings:", outcome);
+//   return maxLength;
+// }
+
+// console.log(longestSub("abcbbcbb"));
+
+//-------------------------------------------------------------------------
+// Number of Substrings Containing All Three Characters
+// Input: s = "abcabc"
+// Output: 10
+// Explanation: The substrings containing at least one o
+// ccurrence of the characters a, b and c are "abc", "abca", "abcab", "abcabc", "bca", "bcab", "bcabc", "cab", "cabc" and "abc" (again).
+
+// var numberOfSubstrings = function (s) {
+//   let ouput = [];
+//   let left = 0;
+//   let freq = new Map();
+//   for (let right = 0; right < s.length; right++) {
+//     freq.set(s[right], (freq.get(s[right]) || 0) + 1);
+//     console.log("freq", freq);
+//     if (freq.get("a") === 1 && freq.get("b") === 1 && freq.get("c") === 1) {
+//       let slicedString = s.slice(left, right + 1);
+//       ouput.push(slicedString);
+//     } else if (freq.get("a") > 1 || freq.get("b") > 1 || freq.get("c") > 1) {
+//       freq.set(s[left], freq.get(s[left]) - 1);
+//       left++;
+//       if (freq.get("a") === 1 && freq.get("b") === 1 && freq.get("c") === 1) {
+//         let slicedString = s.slice(left, right + 1);
+//         ouput.push(slicedString);
+//       }
+//     }
+//   }
+//   return ouput;
+// };
+
+// console.log(numberOfSubstrings("abcabc"));
+
+var numberOfSubstrings = function (s) {
+  let ouput = [];
+  let left = 0;
+  let freq = new Map();
+  for (let right = 0; right < s.length; right++) {
+    freq.set(s[right], (freq.get(s[right]) || 0) + 1);
+    console.log("freq", freq);
+    if (freq.get("a") >= 1 && freq.get("b") >= 1 && freq.get("c") >= 1) {
+      let slicedString = s.slice(left, right + 1);
+      ouput.push(slicedString);
+    } else if (freq.get("a") == 0 || freq.get("b") == 0 || freq.get("c") == 0) {
+      freq.set(s[left], freq.get(s[left]) - 1);
+      left++;
+    }
+  }
+
+  return ouput;
 };
+
 console.log(numberOfSubstrings("abcabc"));
